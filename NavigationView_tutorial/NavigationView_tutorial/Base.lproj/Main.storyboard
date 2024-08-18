@@ -93,6 +93,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XVe-6f-Crs"/>
+                    <connections>
+                        <outlet property="loginBtn" destination="9df-cu-XlX" id="21D-Ie-Qvz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -184,7 +187,7 @@
     <resources>
         <image name="ic_img" width="220" height="178"/>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
