@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_CompletionBlock_Tutorial_CompletionBlock_TutorialUITests : NSObject
+@end
+@implementation PodsDummy_Pods_CompletionBlock_Tutorial_CompletionBlock_TutorialUITests
+@end
