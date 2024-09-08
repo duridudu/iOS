@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  05_NavigationBar_NO_StroyBoard
+//  06_Custom Popup
 //
-//  Created by 이윤주 on 9/7/24.
+//  Created by 이윤주 on 9/8/24.
 //
 
 import UIKit
@@ -16,30 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        // guard let _ = (scene as? UIWindowScene) else { return }
-        
-        // 윈도우 씬 가져오기
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        // 윈도우 크기 설정
-        window = UIWindow(frame: UIScreen.main.bounds)
-        
-        // 뷰컨트롤러 인스턴스 설정
-        let mainVC = MainViewController()
-        
-        // 루트 네비게이션 컨트롤러 설정
-        // 네비게이션컨트롤러의 루트 컨트롤러는 UIViewController여야한다.
-         let navVC = UINavigationController(rootViewController: mainVC)
-        
-        // 루트 뷰컨트롤러를 위에서 설정한 네비게이션 컨트롤러로 설정
-        window?.rootViewController = navVC
-        
-        // 설정한 윈도우 보이게
-        window?.makeKeyAndVisible()
-        
-        // 윈도우 씬 설정
-        window?.windowScene = windowScene
-        
+        guard let _ = (scene as? UIWindowScene) else { return }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
