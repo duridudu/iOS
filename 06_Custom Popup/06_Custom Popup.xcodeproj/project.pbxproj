@@ -19,6 +19,7 @@
 		6502BD6E2C8D9513006C0564 /* PopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6502BD6D2C8D9513006C0564 /* PopUp.storyboard */; };
 		6502BD702C8D9AC3006C0564 /* CutomPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502BD6F2C8D9AC3006C0564 /* CutomPopupViewController.swift */; };
 		6502BD732C8D9DE9006C0564 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6502BD722C8D9DE9006C0564 /* WebKit.framework */; };
+		65E0CB162CA07157009BC090 /* PopUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E0CB152CA07157009BC090 /* PopUpDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		6502BD6D2C8D9513006C0564 /* PopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopUp.storyboard; sourceTree = "<group>"; };
 		6502BD6F2C8D9AC3006C0564 /* CutomPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutomPopupViewController.swift; sourceTree = "<group>"; };
 		6502BD722C8D9DE9006C0564 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		65E0CB152CA07157009BC090 /* PopUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				6502BD4B2C8D92D4006C0564 /* Info.plist */,
 				6502BD6D2C8D9513006C0564 /* PopUp.storyboard */,
 				6502BD6F2C8D9AC3006C0564 /* CutomPopupViewController.swift */,
+				65E0CB152CA07157009BC090 /* PopUpDelegate.swift */,
 			);
 			path = "06_Custom Popup";
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E0CB162CA07157009BC090 /* PopUpDelegate.swift in Sources */,
 				6502BD702C8D9AC3006C0564 /* CutomPopupViewController.swift in Sources */,
 				6502BD422C8D92D3006C0564 /* ViewController.swift in Sources */,
 				6502BD3E2C8D92D3006C0564 /* AppDelegate.swift in Sources */,

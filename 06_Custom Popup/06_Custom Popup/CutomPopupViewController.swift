@@ -7,12 +7,15 @@
 
 import UIKit
 
-class CutomPopupViewController:UIViewController{
+class CutomPopupViewController:UIViewController {
+  
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var subscribeBtn: UIButton!
     @IBOutlet weak var bgBtn: UIButton!
+    @IBOutlet weak var openChatBtn: UIButton!
     
     var subscribeBtnCompletionClosure:(() -> Void)?
+    var myPopUpDelegate : PopUpDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,7 @@ class CutomPopupViewController:UIViewController{
         // 모서리 설정
         contentView.layer.cornerRadius = 30
         subscribeBtn.layer.cornerRadius = 10
+        openChatBtn.layer.cornerRadius = 10
     }
     
     @IBAction func onBgBtnClicked(_ sender: UIButton) {
@@ -33,8 +37,12 @@ class CutomPopupViewController:UIViewController{
         if let subscribeBtnCompletionClosure = subscribeBtnCompletionClosure{
             // 메인에 알린다.
             subscribeBtnCompletionClosure()
-            
-            
+ 
         }
     }
+    @IBAction func onOpenChatBtnClicked(_ sender: UIButton) {
+        print("CutomPopupViewController - onOpenChatBtnClicked() called")
+        myPopUpDelegate?.onOpenChatBtnClicked()
+    }
+    
 }
