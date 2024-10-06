@@ -13,4 +13,5 @@
    (1) 스토리보드로 네비게이션 컨트롤러 구현</br>
    (2)NavigationController - No storyboard : 스토리보드 없이 네비게이션 컨트롤러 구현
 06. CutsomPopUP</br>
-   : completion block과 modal처리로 화면 간 팝업 이벤트 주고 받기
+   (1) completion block과 modal처리로 화면 간 팝업 이벤트 주고 받기</br>
+   (2) delegate pattern으로 화면 간 팝업 이벤트 주고 받기 
