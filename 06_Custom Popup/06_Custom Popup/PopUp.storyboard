@@ -48,30 +48,43 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BbD-51-nIx">
-                                        <rect key="frame" x="20" y="295.33333333333337" width="200" height="76.666666666666686"/>
+                                        <rect key="frame" x="20" y="253" width="200" height="119"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVu-nh-SzM" userLabel="OpenChat Btn">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHI-d5-d2N">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="34.333333333333336"/>
+                                                <color key="backgroundColor" systemColor="systemMintColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="X5Q-BK-JF0"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="두리두 블로그 가기"/>
+                                                <connections>
+                                                    <action selector="onBlogBtnClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fW5-s5-Id2"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVu-nh-SzM" userLabel="OpenChat Btn">
+                                                <rect key="frame" x="0.0" y="42.333333333333371" width="200" height="34.333333333333343"/>
                                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="XK2-eA-Qqu"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="오픈채팅방 가기"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="git 구경하기"/>
                                                 <connections>
                                                     <action selector="onOpenChatBtnClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="zKG-ZQ-6vw"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hy-Gz-C1I">
-                                                <rect key="frame" x="0.0" y="42.333333333333258" width="200" height="34.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="84.666666666666629" width="200" height="34.333333333333343"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="szy-lK-wFb"/>
                                                 </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="구독하러 가기"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="velog 구경하기"/>
                                                 <connections>
                                                     <action selector="onSubscribeBtnClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fZk-z6-SvK"/>
                                                 </connections>
@@ -108,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="bgBtn" destination="Njk-Zx-26W" id="9bj-MG-GQo"/>
+                        <outlet property="blogBtn" destination="yHI-d5-d2N" id="wbc-Gm-EUi"/>
                         <outlet property="contentView" destination="we5-qu-kcs" id="1o6-jV-ETP"/>
                         <outlet property="openChatBtn" destination="zVu-nh-SzM" id="emn-Dc-h0l"/>
                         <outlet property="subscribeBtn" destination="9hy-Gz-C1I" id="UiU-mS-nah"/>
@@ -123,8 +137,11 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

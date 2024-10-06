@@ -13,6 +13,7 @@ class CutomPopupViewController:UIViewController {
     @IBOutlet weak var subscribeBtn: UIButton!
     @IBOutlet weak var bgBtn: UIButton!
     @IBOutlet weak var openChatBtn: UIButton!
+    @IBOutlet weak var blogBtn: UIButton!
     
     var subscribeBtnCompletionClosure:(() -> Void)?
     var myPopUpDelegate : PopUpDelegate?
@@ -24,6 +25,7 @@ class CutomPopupViewController:UIViewController {
         contentView.layer.cornerRadius = 30
         subscribeBtn.layer.cornerRadius = 10
         openChatBtn.layer.cornerRadius = 10
+        blogBtn.layer.cornerRadius = 10
     }
     
     @IBAction func onBgBtnClicked(_ sender: UIButton) {
@@ -40,10 +42,18 @@ class CutomPopupViewController:UIViewController {
             subscribeBtnCompletionClosure2()
         }
     }
-    
+   
+    // 오픈채팅 버튼 - protocol 호출
     @IBAction func onOpenChatBtnClicked(_ sender: UIButton) {
         print("CutomPopupViewController - onOpenChatBtnClicked() called")
         myPopUpDelegate?.onOpenChatBtnClicked()
     }
     
+    // 블로그 버튼 - notificaiton 호출
+    @IBAction func onBlogBtnClicked(_ sender: UIButton) {
+        print("CutomPopupViewController - onBlogBtnClicked() called")
+        // 방송하기
+        NotificationCenter.default.post(name: Notification.Name(rawValue:notificationName), object: nil)
+        dismiss(animated: true, completion: nil)
+    }
 }
