@@ -30,16 +30,17 @@ class CutomPopupViewController:UIViewController {
         print("CutomPopupViewController - onBgBtnClicked() called")
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func onSubscribeBtnClicked(_ sender: UIButton) {
         print("CutomPopupViewController - onSubscribeBtnClicked() called")
         self.dismiss(animated: true, completion: nil)
         //컴플레션 블럭 호출
-        if let subscribeBtnCompletionClosure = subscribeBtnCompletionClosure{
+        if let subscribeBtnCompletionClosure2 = subscribeBtnCompletionClosure{
             // 메인에 알린다.
-            subscribeBtnCompletionClosure()
- 
+            subscribeBtnCompletionClosure2()
         }
     }
+    
     @IBAction func onOpenChatBtnClicked(_ sender: UIButton) {
         print("CutomPopupViewController - onOpenChatBtnClicked() called")
         myPopUpDelegate?.onOpenChatBtnClicked()
