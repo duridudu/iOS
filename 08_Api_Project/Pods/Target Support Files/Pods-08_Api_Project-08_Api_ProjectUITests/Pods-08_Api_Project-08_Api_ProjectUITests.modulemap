@@ -1,0 +1,6 @@
+framework module Pods_08_Api_Project_08_Api_ProjectUITests {
+  umbrella header "Pods-08_Api_Project-08_Api_ProjectUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

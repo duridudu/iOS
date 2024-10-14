@@ -15,7 +15,7 @@ class ViewController: UIViewController, PopUpDelegate {
     @IBOutlet weak var myWebView: WKWebView!
     
     // 뷰컨트롤러가 메모리에서 해제될 때
-    // NotificationCenter는 옵저버 해제도 해줘야 좋다. 
+    // NotificationCenter는 옵저버 해제도 해줘야 좋다.
     deinit{
         NotificationCenter.default.removeObserver(self)
     }
