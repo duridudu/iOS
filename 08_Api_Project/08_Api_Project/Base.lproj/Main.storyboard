@@ -98,57 +98,33 @@
             </objects>
             <point key="canvasLocation" x="1028.2442748091603" y="3.5211267605633805"/>
         </scene>
-        <!--Photo CollectionVC-->
+        <!--PhotoCollectionVC-->
         <scene sceneID="LIJ-Gm-tNg">
             <objects>
                 <viewController id="RHr-vB-zMX" customClass="PhotoCollectionVC" customModule="_8_Api_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gAe-KS-UDJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PhotoCollectionVC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKs-H2-Yoy">
-                                <rect key="frame" x="114" y="414" width="165" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="WXA-E5-wHC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="nKs-H2-Yoy" firstAttribute="centerX" secondItem="gAe-KS-UDJ" secondAttribute="centerX" id="XuS-0b-V13"/>
-                            <constraint firstItem="nKs-H2-Yoy" firstAttribute="centerY" secondItem="gAe-KS-UDJ" secondAttribute="centerY" id="vXF-nk-qaE"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="qny-F1-tsC"/>
+                    <navigationItem key="navigationItem" title="PhotoCollectionVC" largeTitleDisplayMode="always" id="qny-F1-tsC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZh-9S-kAd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1848" y="397"/>
         </scene>
-        <!--User ListVC-->
+        <!--UserListVC-->
         <scene sceneID="ZmH-jM-oci">
             <objects>
                 <viewController id="7tT-0f-vfV" customClass="UserListVC" customModule="_8_Api_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F5b-8V-n7R">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserListVC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ew7-AD-VVX">
-                                <rect key="frame" x="147" y="414" width="99" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="EdJ-op-Sh9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Ew7-AD-VVX" firstAttribute="centerX" secondItem="F5b-8V-n7R" secondAttribute="centerX" id="f0p-WZ-fdA"/>
-                            <constraint firstItem="Ew7-AD-VVX" firstAttribute="centerY" secondItem="F5b-8V-n7R" secondAttribute="centerY" id="uUl-tp-1PJ"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="piC-hW-rha"/>
+                    <navigationItem key="navigationItem" title="UserListVC" largeTitleDisplayMode="always" id="piC-hW-rha"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m28-vu-6cA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

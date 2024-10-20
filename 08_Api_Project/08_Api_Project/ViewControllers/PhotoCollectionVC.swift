@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class PhotoCollectionVC: UIViewController{
+class PhotoCollectionVC: BaseVC{
     override func viewDidLoad() {
         super.viewDidLoad()
         print("PhotoCollectionVC - viewDidLoad()")
