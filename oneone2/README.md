@@ -29,31 +29,7 @@
 | ---- | ---- | ---- | ---- | 
 | iOS App | Swift |  XCode | Firebase |
 
-### 프로젝트 구조
-```bash
-oneone2
-├── CalendarDecorators.kt   
-├── Calender.kt          // 프래그먼트1
-├── Lists.kt             // 프래그먼트2
-├── LoginActivity.kt
-├── MainActivity.kt
-├── Write.kt             // 프래그먼트3
-├── adapter              // 일기 리스트 리사이클러뷰를 위한 어답터
-│   └── DiaryAdapter.kt
-├── config                  
-│   └── ApplicationClass.kt
-├── model                // 유저, 일기 객체 생성
-│   ├── Diary.kt
-│   ├── User.kt          
-│   ├── UserDao.kt
-│   └── UserDatabase.kt  // 유저는 local DB 사용하므로 설정
-├── repository        
-│   └── UserRepository.kt // 유저는 local DB 사용하므로 설정
-└── viewmodel            // 뷰 모델
-    ├── DiaryViewModel.kt  
-    └── UserViewModel.kt
 
-```
 
 ### Database
 - firebase realtime database 구조
