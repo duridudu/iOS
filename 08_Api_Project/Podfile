@@ -6,7 +6,7 @@ target '08_Api_Project' do
   use_frameworks!
 
   # Pods for 08_Api_Project
-
+  pod 'Alamofire'
   target '08_Api_ProjectTests' do
     inherit! :search_paths
     # Pods for testing

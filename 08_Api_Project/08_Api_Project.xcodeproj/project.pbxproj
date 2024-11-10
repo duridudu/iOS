@@ -11,6 +11,10 @@
 		391AF8295AA8A2AEA104DBAE /* Pods_08_Api_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E05F4133CA62069F16EE24 /* Pods_08_Api_Project.framework */; };
 		657F41AD2CBBB25A004A538E /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657F41AC2CBBB25A004A538E /* UserListVC.swift */; };
 		657F41AF2CBBB29E004A538E /* PhotoCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657F41AE2CBBB29E004A538E /* PhotoCollectionVC.swift */; };
+		65A1435C2CCCB64C008424C6 /* MyAlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A1435B2CCCB64C008424C6 /* MyAlamofireManager.swift */; };
+		65A1435E2CCCB913008424C6 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A1435D2CCCB913008424C6 /* BaseInterceptor.swift */; };
+		65A143602CCCBC93008424C6 /* MyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A1435F2CCCBC93008424C6 /* MyLog.swift */; };
+		65A143622CCCBE16008424C6 /* MySearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A143612CCCBE16008424C6 /* MySearchRouter.swift */; };
 		65A2D5AC2CBBB00B0041A8AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2D5AB2CBBB00B0041A8AE /* AppDelegate.swift */; };
 		65A2D5AE2CBBB00B0041A8AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2D5AD2CBBB00B0041A8AE /* SceneDelegate.swift */; };
 		65A2D5B02CBBB00B0041A8AE /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A2D5AF2CBBB00B0041A8AE /* HomeVC.swift */; };
@@ -49,6 +53,10 @@
 		474BBC595A91203856F3AAA6 /* Pods_08_Api_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_08_Api_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		657F41AC2CBBB25A004A538E /* UserListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListVC.swift; sourceTree = "<group>"; };
 		657F41AE2CBBB29E004A538E /* PhotoCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionVC.swift; sourceTree = "<group>"; };
+		65A1435B2CCCB64C008424C6 /* MyAlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlamofireManager.swift; sourceTree = "<group>"; };
+		65A1435D2CCCB913008424C6 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
+		65A1435F2CCCBC93008424C6 /* MyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLog.swift; sourceTree = "<group>"; };
+		65A143612CCCBE16008424C6 /* MySearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySearchRouter.swift; sourceTree = "<group>"; };
 		65A2D5A82CBBB00B0041A8AE /* 08_Api_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 08_Api_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65A2D5AB2CBBB00B0041A8AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65A2D5AD2CBBB00B0041A8AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,9 +107,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65A1435A2CCCB5DA008424C6 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				65A1435B2CCCB64C008424C6 /* MyAlamofireManager.swift */,
+				65A1435D2CCCB913008424C6 /* BaseInterceptor.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
 		65A2D59F2CBBB00B0041A8AE = {
 			isa = PBXGroup;
 			children = (
+				65A143612CCCBE16008424C6 /* MySearchRouter.swift */,
+				65A1435F2CCCBC93008424C6 /* MyLog.swift */,
 				65A2D5AA2CBBB00B0041A8AE /* 08_Api_Project */,
 				65A2D5C12CBBB00D0041A8AE /* 08_Api_ProjectTests */,
 				65A2D5CB2CBBB00D0041A8AE /* 08_Api_ProjectUITests */,
@@ -124,6 +143,7 @@
 		65A2D5AA2CBBB00B0041A8AE /* 08_Api_Project */ = {
 			isa = PBXGroup;
 			children = (
+				65A1435A2CCCB5DA008424C6 /* Api */,
 				65E9C5FC2CC3B3E900FBC148 /* Utils */,
 				65E9C5FB2CBD5AD900FBC148 /* ViewControllers */,
 				65A2D5AB2CBBB00B0041A8AE /* AppDelegate.swift */,
@@ -434,10 +454,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A143602CCCBC93008424C6 /* MyLog.swift in Sources */,
 				65A2D5B02CBBB00B0041A8AE /* HomeVC.swift in Sources */,
+				65A143622CCCBE16008424C6 /* MySearchRouter.swift in Sources */,
 				65A2D5AC2CBBB00B0041A8AE /* AppDelegate.swift in Sources */,
+				65A1435E2CCCB913008424C6 /* BaseInterceptor.swift in Sources */,
 				65A2D5AE2CBBB00B0041A8AE /* SceneDelegate.swift in Sources */,
 				657F41AD2CBBB25A004A538E /* UserListVC.swift in Sources */,
+				65A1435C2CCCB64C008424C6 /* MyAlamofireManager.swift in Sources */,
 				657F41AF2CBBB29E004A538E /* PhotoCollectionVC.swift in Sources */,
 				65E9C6002CC3B58E00FBC148 /* BaseVC.swift in Sources */,
 				65E9C5FE2CC3B40D00FBC148 /* Constants.swift in Sources */,

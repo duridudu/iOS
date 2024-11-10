@@ -1,0 +1,6 @@
+framework module Pods_oneone2Tests {
+  umbrella header "Pods-oneone2Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

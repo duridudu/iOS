@@ -7,6 +7,7 @@
 
 import UIKit
 import Toast_Swift
+import Alamofire
 
 class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
     
@@ -124,7 +125,37 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
     @IBAction func onSearchBtnClicked(_ sender: UIButton) {
         print("HomeVC - onSearchBtnClicked() called / index : \(searchFilterSegment.selectedSegmentIndex)")
        // 화면으로 이동
-        pushVC()
+        // let url = API.BASE_URL + "search/photos"
+       
+        //let queryParam = ["query" : userInput, "client_id":API.CLIENT_ID]
+        
+//        AF.request(url, method: .get, parameters: queryParam).responseJSON(completionHandler:
+//           {
+//            response in debugPrint(response)
+//        })
+        
+        guard let userInput = self.searchBar.text else {return}
+        var urlToCall:URLRequestConvertible?
+        switch searchFilterSegment.selectedSegmentIndex{
+        case 0:
+            urlToCall = MySearchRouter.searchPhotos(term: userInput)
+        case 1:
+            urlToCall = MySearchRouter.searchUsers(term: userInput)
+        default:
+            print("default")
+        }
+        
+        if let urlConvertible = urlToCall{
+            MyAlamofireManager
+                .shared
+                .session
+                .request(urlConvertible)
+                .validate(statusCode: 200..<401) // validate 안하면 에러일 때 retry 호출이 안됨, 200에서 401 아래까지만 허용
+                .responseJSON(completionHandler: { response in
+                    debugPrint(response)
+                })
+            //pushVC()
+        }
     }
     
     @IBAction func seachFilterValueChanged(_ sender: UISegmentedControl) {
@@ -152,13 +183,17 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         
         // 언래핑
         guard let userInputString = searchBar.text else {return}
-        
+         
         if userInputString.isEmpty {
             self.view.makeToast("📣 검색 키워드를 입력해주세요!",  duration : 2.0 , position:.center)
         }else{
-            pushVC()
+            AF.request("https://api.unsplach.com/search/photos").response {
+                response in debugPrint(response)
+            }
+            //pushVC()
+            
             searchBar.resignFirstResponder()
-        }
+        } 
     }
     
     
