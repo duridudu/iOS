@@ -40,6 +40,14 @@ class WriteViewController:UIViewController{
             print("diary is NOT nil.")
             self.editTitle.text = diary.title
             self.editContent.text = diary.content
+            // 원하는 날짜를 생성 (2024년 11월 16일)
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            self.datePicker.date = diary.timestamp
+//            if let specificDate = formatter.date(from:) {
+//                self.datePicker.date = specificDate
+//            }
+            
         } else {
             isNew = true
             // diary가 nil일 때 처리
@@ -64,44 +72,16 @@ class WriteViewController:UIViewController{
         }
         
         print("USER ID",userId)
-       
-//        userDiaryRef.setValue(["title": title, "content":content, "timestamp" :dateString,  "photourl":"url", "diaryId":userDiaryRef.key]) { error, _ in
-//            if let error = error {
-//                print("Error saving diary entry: \(error)")
-//            } else {
-//                print("Diary entry saved successfully!")
-//            }
-//        }
+
         // 신규작성이면
         if isNew  {
             print("TRUEE")
-            // 사용자 경로에 diaries 항목 추가
-            let userDiaryRef = ref.child("users").child(userId).child("diaries").childByAutoId()
-            userDiaryRef.setValue(["title": title, "content":content, "timestamp" :dateString,  "photourl":"url", "diaryId":userDiaryRef.key]) { error, _ in
-                if let error = error {
-                    print("Error saving diary entry: \(error)")
-                } else {
-                    print("Diary entry saved successfully!")
-                }
-            }
+            
         }
         // 수정이면
         else{
             print("FALSEEEE")
-            // 사용자 경로에 diaries 항목 추가
-            let userDiaryRef = ref.child("users").child(userId).child("diaries").child(diary?.diaryId ?? "")
-            userDiaryRef.updateChildValues([
-                    "title": title ?? "",
-                    "content": content ?? "",
-                    "timestamp": dateString,
-                    "photourl": "url", // 필요에 따라 수정
-                ]) { error, _ in
-                    if let error = error {
-                        print("Error updating diary entry: \(error)")
-                    } else {
-                        print("Diary entry updated successfully!")
-                    }
-            }
+            
         }
         
         
@@ -127,7 +107,7 @@ class WriteViewController:UIViewController{
            // 토스트 메시지의 라벨 생성
            let toastLabel = UILabel()
            toastLabel.text = message
-        toastLabel.font = UIFont(name:"눈누 기초고딕 Regular", size:10)
+        toastLabel.font = UIFont(name:"NoonnuBasicGothicRegular", size:10)
            toastLabel.textColor = .white
            toastLabel.textAlignment = .center
            toastLabel.numberOfLines = 0

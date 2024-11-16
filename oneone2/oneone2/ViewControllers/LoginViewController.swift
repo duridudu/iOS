@@ -66,6 +66,10 @@ class LoginViewController:UIViewController {
     
     func moveToMainScreen() {
         showToast(message: "환영합니다! 😻")
+        // 로그인 후 userId 설정
+        UserSession.shared.userId = Auth.auth().currentUser?.uid ?? ""
+
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
         

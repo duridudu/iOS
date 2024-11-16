@@ -34,6 +34,10 @@
 		65A0CC5A2CDF2C74001E7C1B /* MainViewController+FSCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0CC592CDF2C74001E7C1B /* MainViewController+FSCalendar.swift */; };
 		65A0CC612CDF3A08001E7C1B /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0CC602CDF3A08001E7C1B /* TodoTableViewCell.swift */; };
 		65C013F32CDF4A64007410E2 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C013F22CDF4A64007410E2 /* WriteViewController.swift */; };
+		65CDB7B12CE8791700402DD4 /* NoonnuBasicGothicRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65CDB7B02CE8791700402DD4 /* NoonnuBasicGothicRegular.ttf */; };
+		65CDB7B32CE881FD00402DD4 /* DiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDB7B22CE881FD00402DD4 /* DiaryModel.swift */; };
+		65CDB7B52CE8847100402DD4 /* UserSeesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDB7B42CE8847100402DD4 /* UserSeesion.swift */; };
+		65CDB7B82CE8878300402DD4 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDB7B72CE8878300402DD4 /* DiaryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +114,10 @@
 		65A0CC5D2CDF315E001E7C1B /* NoonnuBasicGothicRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NoonnuBasicGothicRegular.ttf; sourceTree = "<group>"; };
 		65A0CC602CDF3A08001E7C1B /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		65C013F22CDF4A64007410E2 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		65CDB7B02CE8791700402DD4 /* NoonnuBasicGothicRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NoonnuBasicGothicRegular.ttf; sourceTree = "<group>"; };
+		65CDB7B22CE881FD00402DD4 /* DiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryModel.swift; sourceTree = "<group>"; };
+		65CDB7B42CE8847100402DD4 /* UserSeesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeesion.swift; sourceTree = "<group>"; };
+		65CDB7B72CE8878300402DD4 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		7928227DCF0A51DCE821B65E /* Pods-oneone2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneone2.debug.xcconfig"; path = "Target Support Files/Pods-oneone2/Pods-oneone2.debug.xcconfig"; sourceTree = "<group>"; };
 		7E43E6CC980A3FECFC89156F /* Pods_oneone2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oneone2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB52EC3BA20F8F800ED2CE7B /* Pods_oneone2_oneone2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oneone2_oneone2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				65A0CC5D2CDF315E001E7C1B /* NoonnuBasicGothicRegular.ttf */,
+				65CDB7B62CE8875D00402DD4 /* ViewModels */,
 				655E03E72CDF601E00E22E76 /* extensions */,
 				655E03E22CDF55AC00E22E76 /* Models */,
 				65C013F12CDF4836007410E2 /* ViewControllers */,
@@ -211,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				655E03E32CDF55BD00E22E76 /* DiaryEntry.swift */,
+				65CDB7B22CE881FD00402DD4 /* DiaryModel.swift */,
+				65CDB7B42CE8847100402DD4 /* UserSeesion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -237,6 +248,7 @@
 		65A0CC5F2CDF3243001E7C1B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				65CDB7B02CE8791700402DD4 /* NoonnuBasicGothicRegular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -250,6 +262,14 @@
 				655E03E52CDF5D1C00E22E76 /* ListViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		65CDB7B62CE8875D00402DD4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				65CDB7B72CE8878300402DD4 /* DiaryViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		9AB5AF1C5F4C9FB3E0CCF5E2 /* Frameworks */ = {
@@ -407,6 +427,7 @@
 				6548EAC72CDD02F400359E90 /* GoogleService-Info.plist in Resources */,
 				6548EAA12CDCFE5200359E90 /* Base in Resources */,
 				6548EA9C2CDCFE5000359E90 /* Base in Resources */,
+				65CDB7B12CE8791700402DD4 /* NoonnuBasicGothicRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,12 +558,15 @@
 				6548EAD22CDD09D200359E90 /* LoginViewController.swift in Sources */,
 				6548EA952CDCFE5000359E90 /* AppDelegate.swift in Sources */,
 				65A0CC582CDF2622001E7C1B /* UIColor_CustomColors.swift in Sources */,
+				65CDB7B82CE8878300402DD4 /* DiaryViewModel.swift in Sources */,
 				655E03E92CDF604600E22E76 /* ListViewController+Extension.swift in Sources */,
 				6548EA972CDCFE5000359E90 /* SceneDelegate.swift in Sources */,
 				65A0CC5A2CDF2C74001E7C1B /* MainViewController+FSCalendar.swift in Sources */,
 				65A0CC612CDF3A08001E7C1B /* TodoTableViewCell.swift in Sources */,
+				65CDB7B52CE8847100402DD4 /* UserSeesion.swift in Sources */,
 				65C013F32CDF4A64007410E2 /* WriteViewController.swift in Sources */,
 				655E03E42CDF55BD00E22E76 /* DiaryEntry.swift in Sources */,
+				65CDB7B32CE881FD00402DD4 /* DiaryModel.swift in Sources */,
 				655E03EB2CDF653B00E22E76 /* MainViewController+Extension.swift in Sources */,
 				655E03E62CDF5D1C00E22E76 /* ListViewController.swift in Sources */,
 				6548EAC52CDD00F800359E90 /* MainViewController.swift in Sources */,

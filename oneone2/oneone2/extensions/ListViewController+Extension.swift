@@ -74,7 +74,7 @@ extension ListViewController{
             // 데이터 전달
             secondTabVC.diary = selectedDiary
             print("MOVE22", selectedDiary)     // 두 번째 탭으로 이동
-                tabBarController.selectedIndex = 1
+            tabBarController.selectedIndex = 1
             }
        
     }

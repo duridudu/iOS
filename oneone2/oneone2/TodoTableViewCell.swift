@@ -31,10 +31,14 @@ class TodoTableViewCell: UITableViewCell {
         if isList {
             lblTitle.text = diary.title
             lblDate.text = dateFormatter.string(from: diary.timestamp)
+            lblTitle.font = UIFont(name: "NoonnuBasicGothicRegular", size: 14)
+            lblDate.font = UIFont(name: "NoonnuBasicGothicRegular", size: 12)
         }
         else{
             lblTitle2.text = diary.title
             lblDate2.text = dateFormatter.string(from: diary.timestamp)
+            lblTitle2.font = UIFont(name: "NoonnuBasicGothicRegular", size: 14)
+            lblDate2.font = UIFont(name: "NoonnuBasicGothicRegular", size: 14)
         }
         
         // 셀의 테두리 설정

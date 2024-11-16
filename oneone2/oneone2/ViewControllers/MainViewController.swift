@@ -21,13 +21,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var eventsArray = [Date]()
     var todoList: [String] = []
     
-    var ref:DatabaseReference!
-    //    var diaries: [Date: [String: Any]] = [:]
-    //    var diariesByDate: [Date: [DiaryEntry]] = [:]
-    // 다이어리 항목을 저장할 배열
-    var diaryEntries = [DiaryEntry]()
-   
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
@@ -42,6 +36,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         //setupUI()
+        for family in UIFont.familyNames {
+            print("Font Family: \(family)")
+            for fontName in UIFont.fontNames(forFamilyName: family) {
+                print("Font Name: \(fontName)")
+            }
+        }
+
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -125,7 +126,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0 //헤더 좌,우측 흐릿한 글씨 삭제
         calendar.appearance.headerDateFormat = "YYYY년 M월" //날짜(헤더) 표시 형식
         calendar.appearance.headerTitleColor = .mainColor //2021년 1월(헤더) 색
-        calendar.appearance.headerTitleFont = UIFont(name: "눈누 기초고딕 Regular", size: 22) //타이틀 폰트 크기
+        calendar.appearance.headerTitleFont = UIFont(name: "NoonnuBasicGothicRegular", size: 22) //타이틀 폰트 크기
         
         
         //MARK: -캘린더(날짜 부분) 관련
@@ -134,7 +135,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         calendar.appearance.selectionColor = .calendarSelectCircleGrey //선택 된 날의 동그라미 색
         calendar.appearance.titleWeekendColor = .blue //주말 날짜 색
         calendar.appearance.titleDefaultColor = .mainColor //기본 날짜 색
-        calendar.appearance.weekdayFont = UIFont(name: "눈누 기초고딕 Regular", size: 16)
+        calendar.appearance.weekdayFont = UIFont(name: "NoonnuBasicGothicRegular", size: 16)
         
         
         //MARK: -오늘 날짜(Today) 관련
@@ -143,7 +144,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         calendar.appearance.todaySelectionColor = .mainColor  //Today에 표시되는 선택 후 동그라미 색
         
         // Month 폰트 설정
-        calendar.appearance.headerTitleFont = UIFont(name: "눈누 기초고딕 Regular", size: 16)
+        calendar.appearance.headerTitleFont = UIFont(name: "NoonnuBasicGothicRegular", size: 16)
         
         
         // day 폰트 설정
@@ -162,143 +163,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    // Firebase에서 불러온 timestamp string을 Date로 변환
-    func convertStringToDate(_ dateString: String) -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd" // 저장할 때 사용한 포맷
-        return dateFormatter.date(from: dateString)
-    }
-    
-    
-    private func setEvents(){
-        print("---SET EVENTS---")
-        let userId = Auth.auth().currentUser?.uid ?? ""
-        let diariesRef = Database.database().reference().child("users/\(userId)/diaries")
-        
-        diariesRef.observeSingleEvent(of: .value) { snapshot in
-            var entries = [DiaryEntry]()
-            
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let diaryData = snapshot.value as? [String: Any] {
-                    
-                    let title = diaryData["title"] as? String ?? ""
-                    let content = diaryData["content"] as? String ?? ""
-                    let timestampString = diaryData["timestamp"] as? String ?? ""
-                    let diaryId = diaryData["diaryId"] as? String ?? ""
-                    if let timestamp = self.convertStringToDate(timestampString) {
-                        let newEntry = DiaryEntry(title: title, content: content, timestamp: timestamp, diaryId: diaryId)
-                        entries.append(newEntry)
-                    }
-                }
-            }
-            
-            // 불러온 다이어리 데이터를 배열에 저장
-            self.diaryEntries = entries
-            self.calendar.reloadData() // 캘린더를 새로고침하여 데이터 표시
-            
-        }
-        
-        
-    }
-    
-    func setEachEvent(for date: Date) {
-        let userId = Auth.auth().currentUser?.uid ?? ""
-           let diariesRef = Database.database().reference().child("users/\(userId)/diaries")
-           
-           // 날짜를 "yyyy-MM-dd" 형식의 문자열로 변환
-           let dateFormatter = DateFormatter()
-           dateFormatter.dateFormat = "yyyy-MM-dd"
-           let dateString = dateFormatter.string(from: date)
-           
-           // 특정 날짜에 해당하는 데이터만 가져오는 쿼리
-           let query = diariesRef.queryOrdered(byChild: "timestamp").queryEqual(toValue: dateString)
-           
-           query.observeSingleEvent(of: .value) { snapshot in
-               var entries = [DiaryEntry]()
-               
-               for child in snapshot.children {
-                   if let snapshot = child as? DataSnapshot,
-                      let diaryData = snapshot.value as? [String: Any] {
-                       
-                       let title = diaryData["title"] as? String ?? ""
-                       let content = diaryData["content"] as? String ?? ""
-                       let timestampString = diaryData["timestamp"] as? String ?? ""
-                       let diaryId = diaryData["diaryId"] as? String ?? ""
-                       // 날짜 형식 변환
-                       if let timestamp = self.convertStringToDate(timestampString) {
-                           let newEntry = DiaryEntry(title: title, content: content, timestamp: timestamp, diaryId: diaryId)
-                           entries.append(newEntry)
-                       }
-                   }
-               }
-               
-               // 불러온 다이어리 데이터를 배열에 저장
-               self.diaryEntries = entries
-               self.tableView.reloadData() // 테이블뷰 새로고침
-           }
-        
-       
-    }
-    
-    func showToast(message: String, duration: Double = 2.0) {
-           // 토스트 메시지의 라벨 생성
-           let toastLabel = UILabel()
-           toastLabel.text = message
-            toastLabel.font = UIFont(name:"눈누 기초고딕 Regular", size:10)
-           toastLabel.textColor = .white
-           toastLabel.textAlignment = .center
-           toastLabel.numberOfLines = 0
-           
-           // 라벨 배경과 스타일 설정
-           toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.7)
-           toastLabel.layer.cornerRadius = 10
-           toastLabel.clipsToBounds = true
-           
-           // 라벨 위치와 크기 설정
-           let textSize = toastLabel.intrinsicContentSize
-           let labelWidth = min(textSize.width + 40, view.frame.width - 40)
-           let labelHeight = textSize.height + 20
-           toastLabel.frame = CGRect(x: (view.frame.width - labelWidth) / 2,
-                                     y: view.frame.height - 260,
-                                     width: labelWidth,
-                                     height: labelHeight)
-           
-           // 토스트 메시지를 뷰에 추가하고 애니메이션으로 나타나게 하기
-           view.addSubview(toastLabel)
-           UIView.animate(withDuration: 0.5, delay: duration, options: .curveEaseOut, animations: {
-               toastLabel.alpha = 0.0
-           }) { _ in
-               toastLabel.removeFromSuperview() // 애니메이션 종료 후 제거
-           }
-       }
-    
-    
-    // Firebase에서 다이어리 삭제하는 메서드
-    func deleteDiaryEntryFromFirebase(diary: DiaryEntry) {
-        let userId = Auth.auth().currentUser?.uid ?? ""
-        let diaryRef = Database.database().reference().child("users/\(userId)/diaries")
-            
-        // diaryId로 해당 항목을 찾아서 삭제
-           let query = diaryRef.queryOrdered(byChild: "diaryId").queryEqual(toValue: diary.diaryId) // diaryId를 사용하여 쿼리
-           
-           query.observeSingleEvent(of: .value) { snapshot in
-               if let snapshot = snapshot.children.allObjects.first as? DataSnapshot {
-                   // diaryId에 해당하는 항목을 삭제
-                   snapshot.ref.removeValue { error, _ in
-                       if let error = error {
-                           print("Error deleting diary: \(error.localizedDescription)")
-                       } else {
-                           self.showToast(message: "삭제되었습니다.")
-                           // 삭제 후 바로 없어진거 보여주려고
-                           self.setEvents()
-                           print("Diary deleted successfully!")
-                       }
-                   }
-               }
-           }
-        }
- 
+   
     
     
 }

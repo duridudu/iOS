@@ -12,4 +12,5 @@ struct DiaryEntry {
     let content: String
     let timestamp: Date
     var diaryId: String
+    
 }

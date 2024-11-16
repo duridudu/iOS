@@ -31,38 +31,38 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         setEvents()
     }
     
-    private func setEvents(){
-        let userId = Auth.auth().currentUser?.uid ?? ""
-        let diariesRef = Database.database().reference().child("users/\(userId)/diaries")
-        
-        diariesRef.observeSingleEvent(of: .value) { snapshot in
-            var entries = [DiaryEntry]()
-            
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let diaryData = snapshot.value as? [String: Any] {
-                    
-                    let title = diaryData["title"] as? String ?? ""
-                    let content = diaryData["content"] as? String ?? ""
-                    let timestampString = diaryData["timestamp"] as? String ?? ""
-                    let diaryId = diaryData["diaryId"] as? String ?? ""
-                    
-                    print("TABLE", title)
-                    if let timestamp = self.convertStringToDate(timestampString) {
-                        let newEntry = DiaryEntry(title: title, content: content, timestamp: timestamp, diaryId:diaryId)
-                        entries.append(newEntry)
-                    }
-                }
-            }
-            
-            // 불러온 다이어리 데이터를 배열에 저장
-            self.diaryEntries = entries
-            self.tableView.reloadData()
-           // self.calendar.reloadData() // 캘린더를 새로고침하여 데이터 표시
-            
-        }
-        
-    }
+//    private func setEvents(){
+//        let userId = Auth.auth().currentUser?.uid ?? ""
+//        let diariesRef = Database.database().reference().child("users/\(userId)/diaries")
+//        
+//        diariesRef.observeSingleEvent(of: .value) { snapshot in
+//            var entries = [DiaryEntry]()
+//            
+//            for child in snapshot.children {
+//                if let snapshot = child as? DataSnapshot,
+//                   let diaryData = snapshot.value as? [String: Any] {
+//                    
+//                    let title = diaryData["title"] as? String ?? ""
+//                    let content = diaryData["content"] as? String ?? ""
+//                    let timestampString = diaryData["timestamp"] as? String ?? ""
+//                    let diaryId = diaryData["diaryId"] as? String ?? ""
+//                    
+//                    print("TABLE", title)
+//                    if let timestamp = self.convertStringToDate(timestampString) {
+//                        let newEntry = DiaryEntry(title: title, content: content, timestamp: timestamp, diaryId:diaryId)
+//                        entries.append(newEntry)
+//                    }
+//                }
+//            }
+//            
+//            // 불러온 다이어리 데이터를 배열에 저장
+//            self.diaryEntries = entries
+//            self.tableView.reloadData()
+//           // self.calendar.reloadData() // 캘린더를 새로고침하여 데이터 표시
+//            
+//        }
+//        
+//    }
     
     // 날짜 문자열을 Date 객체로 변환하는 함수
     func convertStringToDate(_ dateString: String) -> Date? {
@@ -77,7 +77,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
            // 토스트 메시지의 라벨 생성
            let toastLabel = UILabel()
            toastLabel.text = message
-        toastLabel.font = UIFont(name:"눈누 기초고딕 Regular", size:10)
+        toastLabel.font = UIFont(name:"NoonnuBasicGothicRegular", size:10)
            toastLabel.textColor = .white
            toastLabel.textAlignment = .center
            toastLabel.numberOfLines = 0
@@ -106,28 +106,28 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
        }
     
     
-    // Firebase에서 다이어리 삭제하는 메서드
-    func deleteDiaryEntryFromFirebase(diary: DiaryEntry) {
-        let userId = Auth.auth().currentUser?.uid ?? ""
-        let diaryRef = Database.database().reference().child("users/\(userId)/diaries")
-            
-        // diaryId로 해당 항목을 찾아서 삭제
-           let query = diaryRef.queryOrdered(byChild: "diaryId").queryEqual(toValue: diary.diaryId) // diaryId를 사용하여 쿼리
-           
-           query.observeSingleEvent(of: .value) { snapshot in
-               if let snapshot = snapshot.children.allObjects.first as? DataSnapshot {
-                   // diaryId에 해당하는 항목을 삭제
-                   snapshot.ref.removeValue { error, _ in
-                       if let error = error {
-                           print("Error deleting diary: \(error.localizedDescription)")
-                       } else {
-                           self.showToast(message: "삭제되었습니다.")
-                           // 삭제 후 바로 없어진거 보여주려고
-                           self.setEvents()
-                           print("Diary deleted successfully!")
-                       }
-                   }
-               }
-           }
-        }
+//    // Firebase에서 다이어리 삭제하는 메서드
+//    func deleteDiaryEntryFromFirebase(diary: DiaryEntry) {
+//        let userId = Auth.auth().currentUser?.uid ?? ""
+//        let diaryRef = Database.database().reference().child("users/\(userId)/diaries")
+//            
+//        // diaryId로 해당 항목을 찾아서 삭제
+//           let query = diaryRef.queryOrdered(byChild: "diaryId").queryEqual(toValue: diary.diaryId) // diaryId를 사용하여 쿼리
+//           
+//           query.observeSingleEvent(of: .value) { snapshot in
+//               if let snapshot = snapshot.children.allObjects.first as? DataSnapshot {
+//                   // diaryId에 해당하는 항목을 삭제
+//                   snapshot.ref.removeValue { error, _ in
+//                       if let error = error {
+//                           print("Error deleting diary: \(error.localizedDescription)")
+//                       } else {
+//                           self.showToast(message: "삭제되었습니다.")
+//                           // 삭제 후 바로 없어진거 보여주려고
+//                           self.setEvents()
+//                           print("Diary deleted successfully!")
+//                       }
+//                   }
+//               }
+//           }
+//        }
 }
