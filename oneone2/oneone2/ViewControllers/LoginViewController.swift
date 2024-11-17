@@ -16,6 +16,8 @@ class LoginViewController:UIViewController {
     @IBOutlet weak var editId: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     
+   
+    
     override func viewDidLoad() {
             super.viewDidLoad()
             editPw.isSecureTextEntry = true
@@ -53,6 +55,7 @@ class LoginViewController:UIViewController {
                   self.signUp(email: email, password: password)
                   return
               }
+              
               // 로그인 성공 시 메인 화면으로 이동
               print("User logged in successfully: \(authResult?.user.email ?? "")")
               self.saveLoginStateAndMoveToMain()
@@ -68,8 +71,8 @@ class LoginViewController:UIViewController {
         showToast(message: "환영합니다! 😻")
         // 로그인 후 userId 설정
         UserSession.shared.userId = Auth.auth().currentUser?.uid ?? ""
-
-        
+        DiaryModel.shared.setUserId(Auth.auth().currentUser?.uid ?? "")
+        print("USER INFO : ", Auth.auth().currentUser?.uid ?? "")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")
         

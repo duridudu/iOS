@@ -8,9 +8,9 @@
 import Foundation
 
 struct DiaryEntry {
-    let title: String
-    let content: String
-    let timestamp: Date
+    var title: String
+    var content: String
+    var timestamp: String
     var diaryId: String
     
 }

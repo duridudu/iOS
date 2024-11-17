@@ -12,37 +12,26 @@ import FirebaseDatabase
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
   
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnLogout: UIImageView!
     
+    var diaryEntries = [DiaryEntry]()
     var calendar: FSCalendar!
-    var eventsArray = [Date]()
-    var todoList: [String] = []
     
- 
+    // 뷰모델 인스턴스 생성
+    var diaryViewModel = DiaryViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
-        showToast(message: "환영합니다! 😸")
+      
         // 오늘 날짜를 가져옴
         let today = Date()
-        setEachEvent(for:today)
+        setEachEvents(for: today) { [weak self] in
+            self?.setEvents()  // setEachEvents 완료 후 setEvents 실행
+        }
         
-        for fontFamily in UIFont.familyNames {
-            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
-                print(fontName)
-            }
-        }
-        //setupUI()
-        for family in UIFont.familyNames {
-            print("Font Family: \(family)")
-            for fontName in UIFont.fontNames(forFamilyName: family) {
-                print("Font Name: \(fontName)")
-            }
-        }
-
+      //  setEvents()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -52,14 +41,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         btnLogout.isUserInteractionEnabled = true
         btnLogout.addGestureRecognizer(tapGesture)
-        //
-        //        // 테이블 뷰 셀 등록
-        //tableView.register(UINib(nibName: "TodoTableViewCell", bundle: nil), forCellReuseIdentifier: "TodoCell")
-        //
+      
         calendar = FSCalendar()
         calendar.dataSource = self
         calendar.delegate = self
         
+       
         // 필요시 레이아웃 설정 추가
         calendar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(calendar)
@@ -73,14 +60,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ])
         
         configureCalendarAppearance()
-        setEvents()
+        
     }
     
     // 로그아웃 버튼 클릭
     @objc func imageTapped() {
           // 이미지 뷰가 클릭되었을 때 수행할 동작
           print("ImageView was tapped!")
-        showToast(message:"로그아웃 되었습니다.👋")
+        //showToast(message:"로그아웃 되었습니다.👋")
           // 원하는 동작 추가 (예: 화면 전환, 알림 표시 등)
         // 로그아웃 시
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
@@ -93,27 +80,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setEvents()
+        self.calendar.select(Date()) // 오늘 날짜 선택
+        setEachEvents(for:  Date()){ [weak self] in
+            self?.setEvents()  // setEachEvents 완료 후 setEvents 실행
+        }
+//        setEvents()
+        
     }
     // MARK: - TableView DataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-//    // 섹션별 행 수
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return diaryEntries.count
-//    }
-//        
-//    // 셀 설정
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoTableViewCell", for: indexPath) as! TodoTableViewCell
-//        let diary = diaryEntries[indexPath.row]
-//            cell.configure(with: diary)
-//            return cell
-//    }
-    
     
     private func configureCalendarAppearance() {
         
@@ -163,7 +141,45 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-   
+    func setEvents(){
+        // 비동기 처리
+        diaryViewModel.setAllDiaries{ [weak self] diaries in
+            DispatchQueue.main.async {
+                self?.diaryEntries = diaries
+                print("self?.diaryEntries : ", self?.diaryEntries.count)
+                //self?.tableView.reloadData()
+                
+                // FSCalendar 새로 고침
+               // self?.calendar.reloadData() // FSCalendar 업데이트
+                self?.reload()
+            }
+        }
+    }
     
+    func reload(){
+        print("RELOAD : ", self.diaryEntries.count)
+        calendar.reloadData()
+    }
+    
+    func setEachEvents(for date: Date, completion: @escaping () -> Void) {
+        // 비동기 처리
+        diaryViewModel.setEachDiaries(for: date) { [weak self] diaries in
+            DispatchQueue.main.async {
+                self?.diaryEntries = diaries
+                self?.tableView.reloadData()
+                completion()  // 데이터 로딩 완료 후, completion 호출
+            }
+        }
+    }
+
+    func setEachEvent(for date: Date){
+        // 비동기 처리
+        diaryViewModel.setEachDiaries(for: date) { [weak self] diaries in
+            DispatchQueue.main.async {
+                self?.diaryEntries = diaries
+                self?.tableView.reloadData()
+            }
+        }
+    }
     
 }

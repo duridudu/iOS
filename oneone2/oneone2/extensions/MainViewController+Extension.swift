@@ -86,7 +86,8 @@ extension MainViewController{
             let diary = diaryEntries[indexPath.row]
             
             // Firebase에서 해당 다이어리 삭제
-            deleteDiaryEntryFromFirebase(diary: diary)
+            //deleteDiaryEntryFromFirebase(diary: diary)
+            diaryViewModel.deleteDiary(diary: diary)
             
             // 배열에서 삭제
             diaryEntries.remove(at: indexPath.row)

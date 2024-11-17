@@ -16,17 +16,20 @@ class WriteViewController:UIViewController{
     @IBOutlet weak var editTitle: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    var ref: DatabaseReference!
+    // 다이어리 객체 생성
     var diary: DiaryEntry?
+    // 신규인지 수정인지 구분값
     var isNew:Bool = true
+    // 뷰모델 인스턴스 생성
+    var diaryViewModel = DiaryViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference() // Firebase 데이터베이스 초기화
         
         // Tap gesture recognizer 설정
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+        datePicker.datePickerMode = .date
         //isNew=true
         btnAdd.layer.cornerRadius = 10
        
@@ -40,16 +43,15 @@ class WriteViewController:UIViewController{
             print("diary is NOT nil.")
             self.editTitle.text = diary.title
             self.editContent.text = diary.content
-            // 원하는 날짜를 생성 (2024년 11월 16일)
+            
+            // 원하는 날짜를 생성
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
-            self.datePicker.date = diary.timestamp
-//            if let specificDate = formatter.date(from:) {
-//                self.datePicker.date = specificDate
-//            }
+            self.datePicker.date = formatter.date(from: diary.timestamp)!
             
         } else {
             isNew = true
+            
             // diary가 nil일 때 처리
             print("diary is nil.")
         }
@@ -66,22 +68,30 @@ class WriteViewController:UIViewController{
         dateFormatter.dateFormat = "yyyy-MM-dd" // 원하는 포맷으로 설정
         let dateString = dateFormatter.string(from: datePicker)
         
-        guard let userId = Auth.auth().currentUser?.uid else {
-                    print("User not logged in")
-                    return
-        }
-        
-        print("USER ID",userId)
-
         // 신규작성이면
         if isNew  {
             print("TRUEE")
+            diary = DiaryEntry(title: title ?? "", content: content ?? "", timestamp: dateString, diaryId: "")
             
+            if let diary = diary {
+                diaryViewModel.newDiary(diary: diary)
+            } else {
+                print("Error: diary is nil.")
+            }
+
         }
         // 수정이면
         else{
             print("FALSEEEE")
-            
+            diary?.content = content ?? ""
+            diary?.title = title ?? ""
+            diary?.timestamp = dateString
+            // diaryViewModel.editDiary(diary: diary!)
+            if let diary = diary {
+                diaryViewModel.editDiary(diary: diary)
+            } else {
+                print("Error: diary is nil.")
+            }
         }
         
         

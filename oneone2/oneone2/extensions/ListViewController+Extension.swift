@@ -48,17 +48,17 @@ extension ListViewController{
     
     // 셀 삭제 처리
     func deleteDiary(at indexPath: IndexPath) {
-            let diary = diaryEntries[indexPath.row]
+        var diary = diaryEntries[indexPath.row]
             
-            // Firebase에서 해당 다이어리 삭제
-            deleteDiaryEntryFromFirebase(diary: diary)
+        // Firebase에서 해당 다이어리 삭제
+        //  deleteDiaryEntryFromFirebase(diary: diary)
+        diaryViewModel.deleteDiary(diary: diary)
+        // 배열에서 삭제
+        diaryEntries.remove(at: indexPath.row)
             
-            // 배열에서 삭제
-            diaryEntries.remove(at: indexPath.row)
-            
-            // 테이블 뷰에서 해당 셀 삭제
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
+        // 테이블 뷰에서 해당 셀 삭제
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
     
     // 셀 클릭 이벤트
     // UITableViewDelegate 메서드 추가

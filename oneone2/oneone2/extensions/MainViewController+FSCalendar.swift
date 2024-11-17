@@ -12,9 +12,13 @@ extension MainViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     
     // 이벤트 밑에 Dot 표시 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        // 해당 날짜에 다이어리가 있으면 점 표시
+        // 원하는 날짜를 생성
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        print("DOT self.diaryEntries.count : ", diaryEntries.count)
         for entry in diaryEntries {
-            if isSameDay(entry.timestamp, date) {
+           let tempDate = formatter.date(from: entry.timestamp)!
+           if isSameDay(tempDate, date) {
                 return 1
             }
         }

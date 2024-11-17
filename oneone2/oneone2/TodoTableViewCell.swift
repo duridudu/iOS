@@ -30,13 +30,13 @@ class TodoTableViewCell: UITableViewCell {
         // lblTitle과 lblDate에 값 설정
         if isList {
             lblTitle.text = diary.title
-            lblDate.text = dateFormatter.string(from: diary.timestamp)
+            lblDate.text = diary.timestamp
             lblTitle.font = UIFont(name: "NoonnuBasicGothicRegular", size: 14)
             lblDate.font = UIFont(name: "NoonnuBasicGothicRegular", size: 12)
         }
         else{
             lblTitle2.text = diary.title
-            lblDate2.text = dateFormatter.string(from: diary.timestamp)
+            lblDate2.text = diary.timestamp
             lblTitle2.font = UIFont(name: "NoonnuBasicGothicRegular", size: 14)
             lblDate2.font = UIFont(name: "NoonnuBasicGothicRegular", size: 14)
         }
