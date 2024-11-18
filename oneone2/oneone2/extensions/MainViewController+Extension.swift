@@ -42,7 +42,7 @@ extension MainViewController{
         }
         
             return cell
-        }
+    }
     
     // 셀 클릭 이벤트
     // UITableViewDelegate 메서드 추가

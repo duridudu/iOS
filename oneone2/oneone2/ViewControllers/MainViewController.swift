@@ -17,6 +17,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var btnLogout: UIImageView!
     
     var diaryEntries = [DiaryEntry]()
+    
+    var eachdailyEntries = [DiaryEntry]() // 특정 날짜의 데이터
+    var allEntries = [DiaryEntry]()   // 전체 데이터
+    
     var calendar: FSCalendar!
     
     // 뷰모델 인스턴스 생성
@@ -31,7 +35,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self?.setEvents()  // setEachEvents 완료 후 setEvents 실행
         }
         
-      //  setEvents()
+        
+//        setEachEvent(for:Date())
+//        setEvents()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -81,9 +87,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.calendar.select(Date()) // 오늘 날짜 선택
-        setEachEvents(for:  Date()){ [weak self] in
+        
+        
+        // 오늘 날짜를 가져옴
+        let today = Date()
+        setEachEvents(for: today) { [weak self] in
             self?.setEvents()  // setEachEvents 완료 후 setEvents 실행
         }
+        
+//        setEachEvent(for:Date())
 //        setEvents()
         
     }
@@ -145,28 +157,24 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // 비동기 처리
         diaryViewModel.setAllDiaries{ [weak self] diaries in
             DispatchQueue.main.async {
-                self?.diaryEntries = diaries
-                print("self?.diaryEntries : ", self?.diaryEntries.count)
-                //self?.tableView.reloadData()
-                
+                self?.allEntries = diaries
+//                self?.diaryEntries = diaries
+                //print("Set All Event 다이어리 count : ", self?.diaryEntries.count)
+          
                 // FSCalendar 새로 고침
-               // self?.calendar.reloadData() // FSCalendar 업데이트
-                self?.reload()
+               self?.calendar.reloadData() // FSCalendar 업데이트
             }
         }
     }
     
-    func reload(){
-        print("RELOAD : ", self.diaryEntries.count)
-        calendar.reloadData()
-    }
-    
+
     func setEachEvents(for date: Date, completion: @escaping () -> Void) {
         // 비동기 처리
         diaryViewModel.setEachDiaries(for: date) { [weak self] diaries in
             DispatchQueue.main.async {
                 self?.diaryEntries = diaries
                 self?.tableView.reloadData()
+                //print("[NEW] Set Each Event 다이어리 count : ", self?.diaryEntries.count)
                 completion()  // 데이터 로딩 완료 후, completion 호출
             }
         }
@@ -178,6 +186,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             DispatchQueue.main.async {
                 self?.diaryEntries = diaries
                 self?.tableView.reloadData()
+               // print("Set Each Event 다이어리 count : ", self?.diaryEntries.count)
             }
         }
     }

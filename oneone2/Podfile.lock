@@ -33,6 +33,7 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 8.0)
     - leveldb-library (~> 1.22)
   - FirebaseSharedSwift (11.4.0)
+  - FloatingPanel (2.8.6)
   - FSCalendar (2.8.4)
   - GoogleUtilities/AppDelegateSwizzler (8.0.2):
     - GoogleUtilities/Environment
@@ -65,6 +66,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
+  - FloatingPanel
   - FSCalendar
 
 SPEC REPOS:
@@ -78,6 +80,7 @@ SPEC REPOS:
     - FirebaseCoreInternal
     - FirebaseDatabase
     - FirebaseSharedSwift
+    - FloatingPanel
     - FSCalendar
     - GoogleUtilities
     - GTMSessionFetcher
@@ -94,12 +97,13 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: 35731192cab10797b88411be84940d2beb33a238
   FirebaseDatabase: ccd11f02c170076ffeeef40020cbb2f6d33e718c
   FirebaseSharedSwift: 505dae2d05969dbf6d43749a642bb1bf230f0252
+  FloatingPanel: 11559d3700c39f1c2ee8dbb7a5415223b52fdce0
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
   GTMSessionFetcher: 923b710231ad3d6f3f0495ac1ced35421e07d9a6
   leveldb-library: cc8b8f8e013647a295ad3f8cd2ddf49a6f19be19
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: 24f44079a0894514a9adaa38a6bf84211b245fba
+PODFILE CHECKSUM: 4a4af0ef422c208b55dacd8b2f4491511db5fb25
 
 COCOAPODS: 1.15.2

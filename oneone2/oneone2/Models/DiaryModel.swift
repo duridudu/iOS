@@ -28,7 +28,8 @@ class DiaryModel {
     func fetchAllDiaries(completion: @escaping ([DiaryEntry]) -> Void) {
         print("---SET EVENTS---")
         if let diariesRef = diariesRef {
-            diariesRef.observe(.value) { snapshot in
+            let query = diariesRef.queryOrdered(byChild: "timestamp")
+            query.observe(.value) { snapshot  in
                 // snapshot 처리
                 var entries = [DiaryEntry]()
                 
@@ -37,12 +38,13 @@ class DiaryModel {
                        let diaryData = snapshot.value as? [String: Any] {
                         
                         let title = diaryData["title"] as? String ?? ""
-                      //  print("title : ", title)
                         let content = diaryData["content"] as? String ?? ""
                         let timestampString = diaryData["timestamp"] as? String ?? ""
                         let diaryId = diaryData["diaryId"] as? String ?? ""
+                        let categoryName = diaryData["categoryName"] as? String ?? ""
+                        let categoryEmoji = diaryData["categoryEmoji"] as? String ?? ""
                         if self.convertStringToDate(timestampString) != nil {
-                            let newEntry = DiaryEntry(title: title, content: content, timestamp: timestampString, diaryId: diaryId)
+                            let newEntry = DiaryEntry(title: title, content: content, timestamp: timestampString, diaryId: diaryId, categoryName:categoryName, categoryEmoji: categoryEmoji )
                             entries.append(newEntry)
                         }
                     }
@@ -80,9 +82,11 @@ class DiaryModel {
                            let content = diaryData["content"] as? String ?? ""
                            let timestampString = diaryData["timestamp"] as? String ?? ""
                            let diaryId = diaryData["diaryId"] as? String ?? ""
+                           let categoryName = diaryData["categoryName"] as? String ?? ""
+                           let categoryEmogi = diaryData["categoryEmoji"] as? String ?? ""
                            // 날짜 형식 변환
                            if self.convertStringToDate(timestampString) != nil {
-                               let newEntry = DiaryEntry(title: title, content: content, timestamp: timestampString, diaryId: diaryId)
+                               let newEntry = DiaryEntry(title: title, content: content, timestamp: timestampString, diaryId: diaryId, categoryName: categoryName, categoryEmoji: categoryEmogi)
                                entries.append(newEntry)
                            }
                        }
@@ -102,12 +106,55 @@ class DiaryModel {
        
     }
     
+    // MARK: -READ3
+    func fetchCategoryDiaries(for category: String, completion: @escaping ([DiaryEntry]) -> Void){
+        
+        if let diariesRef = diariesRef {
+            //let query2 = diariesRef.queryOrdered(byChild: "timestamp")
+            // 특정 날짜에 해당하는 데이터만 가져오는 쿼리
+            let query = diariesRef.queryOrdered(byChild: "categoryName").queryEqual(toValue: category)
+            query.observeSingleEvent(of: .value) { snapshot in
+                   var entries = [DiaryEntry]()
+                   
+                   for child in snapshot.children {
+                       if let snapshot = child as? DataSnapshot,
+                          let diaryData = snapshot.value as? [String: Any] {
+                           
+                           let title = diaryData["title"] as? String ?? ""
+                           let content = diaryData["content"] as? String ?? ""
+                           let timestampString = diaryData["timestamp"] as? String ?? ""
+                           let diaryId = diaryData["diaryId"] as? String ?? ""
+                           let categoryName = diaryData["categoryName"] as? String ?? ""
+                           let categoryEmogi = diaryData["categoryEmoji"] as? String ?? ""
+                           // 날짜 형식 변환
+                           if self.convertStringToDate(timestampString) != nil {
+                               let newEntry = DiaryEntry(title: title, content: content, timestamp: timestampString, diaryId: diaryId, categoryName: categoryName, categoryEmoji: categoryEmogi)
+                               entries.append(newEntry)
+                           }
+                       }
+                   }
+                // `timestamp` 기준으로 정렬
+                entries.sort { $0.timestamp < $1.timestamp }
+                // 불러온 다이어리 데이터를 배열에 저장
+                self.diaryEntries = entries
+                // 콜백으로 결과 반환
+                completion(self.diaryEntries)
+                  
+               }
+            
+        }else {
+            print("Error: diariesRef is nil")
+        }
+        
+        
+    }
+    
     // MARK: -CREATE
     // 사용자 경로에 diaries 항목 추가
     func addDiary(diary: DiaryEntry){
         let userDiaryRef = //diariesRef?.child("users").child(userId!).child("diaries").childByAutoId()
         diariesRef?.childByAutoId()
-        userDiaryRef?.setValue(["title": diary.title, "content":diary.content, "timestamp" :diary.timestamp, "photourl":"url", "diaryId":userDiaryRef?.key ?? ""]) { error, _ in
+        userDiaryRef?.setValue(["title": diary.title, "content":diary.content, "timestamp" :diary.timestamp, "photourl":"url", "diaryId":userDiaryRef?.key ?? "", "categoryName":diary.categoryName, "categoryEmoji":diary.categoryEmoji]) { error, _ in
             if let error = error {
                 print("Error saving diary entry: \(error)")
             } else {
@@ -126,6 +173,8 @@ class DiaryModel {
             "title": diary.title,
             "content": diary.content,
             "timestamp": diary.timestamp,
+            "categoryName":diary.categoryName,
+            "categoryEmoji":diary.categoryEmoji,
             "photourl": "url" // 필요에 따라 수정
             ]) { error, _ in
                 if let error = error {

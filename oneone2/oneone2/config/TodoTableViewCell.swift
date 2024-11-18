@@ -17,6 +17,9 @@ class TodoTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDate2: UITextView!
     @IBOutlet weak var lblDate: UITextView!
     
+    @IBOutlet weak var lblEmoji: UILabel!
+    @IBOutlet weak var lblEmoji2: UILabel!
+    
     // 삭제 버튼 클릭 시 호출될 메서드
     var deleteButtonTapped: (() -> Void)?
     var deleteButtonTapped2: (() -> Void)?
@@ -24,6 +27,7 @@ class TodoTableViewCell: UITableViewCell {
     var buttonActionClosure: (() -> Void)?
     
     func configure(with diary: DiaryEntry, isList:Bool) {
+        // 날짜 표시
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd" // 날짜 형식 설정
         
@@ -31,14 +35,22 @@ class TodoTableViewCell: UITableViewCell {
         if isList {
             lblTitle.text = diary.title
             lblDate.text = diary.timestamp
-            lblTitle.font = UIFont(name: "NoonnuBasicGothicRegular", size: 14)
+            lblTitle.font = UIFont(name: "NoonnuBasicGothicRegular", size: 16)
             lblDate.font = UIFont(name: "NoonnuBasicGothicRegular", size: 12)
+            // 이모지 표시 설정
+            lblEmoji2.layer.cornerRadius = lblEmoji2.frame.height / 2
+            lblEmoji2.clipsToBounds = true
+            lblEmoji2.text = diary.categoryEmoji
         }
         else{
             lblTitle2.text = diary.title
             lblDate2.text = diary.timestamp
-            lblTitle2.font = UIFont(name: "NoonnuBasicGothicRegular", size: 14)
+            lblTitle2.font = UIFont(name: "NoonnuBasicGothicRegular", size: 16)
             lblDate2.font = UIFont(name: "NoonnuBasicGothicRegular", size: 14)
+            // 이모지 표시 설정
+            lblEmoji.layer.cornerRadius = lblEmoji.frame.height / 2
+            lblEmoji.clipsToBounds = true
+            lblEmoji.text = diary.categoryEmoji
         }
         
         // 셀의 테두리 설정

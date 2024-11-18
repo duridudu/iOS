@@ -72,6 +72,8 @@ class LoginViewController:UIViewController {
         // 로그인 후 userId 설정
         UserSession.shared.userId = Auth.auth().currentUser?.uid ?? ""
         DiaryModel.shared.setUserId(Auth.auth().currentUser?.uid ?? "")
+        CategoryModel.shared.setUserId(Auth.auth().currentUser?.uid ?? "")
+        
         print("USER INFO : ", Auth.auth().currentUser?.uid ?? "")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "TabBarController")

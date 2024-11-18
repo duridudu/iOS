@@ -13,6 +13,9 @@ target 'oneone2' do
   # 달력
   pod 'FSCalendar'
 
+  # Modal
+  pod 'FloatingPanel'
+
   target 'oneone2Tests' do
     inherit! :search_paths
     # Pods for testing

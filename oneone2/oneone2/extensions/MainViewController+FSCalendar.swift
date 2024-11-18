@@ -15,8 +15,7 @@ extension MainViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         // 원하는 날짜를 생성
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        print("DOT self.diaryEntries.count : ", diaryEntries.count)
-        for entry in diaryEntries {
+        for entry in allEntries {
            let tempDate = formatter.date(from: entry.timestamp)!
            if isSameDay(tempDate, date) {
                 return 1

@@ -9,13 +9,20 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FloatingPanel
 
-class ListViewController:UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class ListViewController:UIViewController, UITableViewDataSource, UITableViewDelegate,CategorySelectDelegate  {
     
     // 뷰모델 인스턴스 생성
     var diaryViewModel = DiaryViewModel()
     var diaryEntries = [DiaryEntry]()
+    
     @IBOutlet var tableView: UITableView!
+    
+    // 바텀시트
+    var floatingPanel: FloatingPanelController?
+    var category: CategoryEntry?
+    var button:UIButton!
     
     override func viewDidLoad() {
         // 테이블뷰 설정
@@ -33,53 +40,97 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
             }
         }
         
+        // 카테고리 버튼 추가
+        // 버튼 추가
+        button = UIButton(type: .system)
+        button.setTitle("🔎 전체", for: .normal)
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+            
+        // 버튼의 크기 및 위치 설정
+        button.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
+            
+        // 버튼을 테이블 뷰 헤더에 추가
+        tableView.tableHeaderView = button
+        
+        
        // self.tableView.reloadData()
+    }
+    
+    @objc func buttonTapped() {
+        print("Button was tapped!")
+        // FloatingPanelController 생성
+        floatingPanel = FloatingPanelController()
+
+        // 스토리보드에서 바텀 시트로 사용할 ViewController 가져오기
+        guard let contentVC = storyboard?.instantiateViewController(withIdentifier: "CategoryPopupViewController") as? CategoryPopupViewController else {
+            print("CategoryPopupViewController를 찾을 수 없음")
+            return
+        }
+        contentVC.delegate = self
+        // FloatingPanel에 ViewController 설정
+        floatingPanel?.set(contentViewController: contentVC)
+        floatingPanel?.isRemovalInteractionEnabled = true
+
+        // 바텀 시트 표시
+        present(floatingPanel!, animated: true, completion: nil)
+        //floatingPanel?.addPanel(toParent: self)
     }
     
     
     // 탭바 왔다갔다 할 때 계속 갱신되어야함
     override func viewWillAppear(_ animated: Bool) {
         // 비동기 처리
-        diaryViewModel.setAllDiaries{ [weak self] diaries in
+        if button.title(for: .normal) == "🔎 전체" {
+            setAll()
+        }
+        else{
+            let tempTitle = button.title(for: .normal)
+            setSelected(category: String(tempTitle!.split(separator: " ")[1]))
+        }
+        
+        
+    }
+    
+    // AViewControllerDelegate 구현
+    func didSelectCategory(_category category: CategoryEntry) {
+        // 카테고리 객체에 카테고리 뷰에서 가져온 정보 넣기
+        self.category?.categoryName = category.categoryName
+        self.category?.categoryEmoji = category.categoryEmoji
+        
+        // FloatingPanel 닫기
+        floatingPanel?.dismiss(animated: true, completion: nil)
+        // button title 바꿔주기
+        button.setTitle(category.categoryEmoji + " " + category.categoryName, for: .normal)
+        // 카테고리 별 데이터 정렬
+        // 비동기 처리
+        print("선택된 카테고리 ", category.categoryName)
+        if category.categoryName == "전체" {
+            setAll()
+        }else{
+            setSelected(category: category.categoryName)
+        }
+        
+    }
+    
+    func setAll(){
+        diaryViewModel.setAllDiaries() { [weak self] diaries in
             DispatchQueue.main.async {
                 self?.diaryEntries = diaries
                 self?.tableView.reloadData()
+                print("Set Category Event 다이어리 count : ", self?.diaryEntries.count ?? "")
             }
         }
     }
     
-//    private func setEvents(){
-//        let userId = Auth.auth().currentUser?.uid ?? ""
-//        let diariesRef = Database.database().reference().child("users/\(userId)/diaries")
-//        
-//        diariesRef.observeSingleEvent(of: .value) { snapshot in
-//            var entries = [DiaryEntry]()
-//            
-//            for child in snapshot.children {
-//                if let snapshot = child as? DataSnapshot,
-//                   let diaryData = snapshot.value as? [String: Any] {
-//                    
-//                    let title = diaryData["title"] as? String ?? ""
-//                    let content = diaryData["content"] as? String ?? ""
-//                    let timestampString = diaryData["timestamp"] as? String ?? ""
-//                    let diaryId = diaryData["diaryId"] as? String ?? ""
-//                    
-//                    print("TABLE", title)
-//                    if let timestamp = self.convertStringToDate(timestampString) {
-//                        let newEntry = DiaryEntry(title: title, content: content, timestamp: timestamp, diaryId:diaryId)
-//                        entries.append(newEntry)
-//                    }
-//                }
-//            }
-//            
-//            // 불러온 다이어리 데이터를 배열에 저장
-//            self.diaryEntries = entries
-//            self.tableView.reloadData()
-//           // self.calendar.reloadData() // 캘린더를 새로고침하여 데이터 표시
-//            
-//        }
-//        
-//    }
+    func setSelected(category:String){
+        diaryViewModel.setCategoryDiaries(for: category) { [weak self] diaries in
+            DispatchQueue.main.async {
+                self?.diaryEntries = diaries
+                self?.tableView.reloadData()
+                print("Set Category Event 다이어리 count : ", self?.diaryEntries.count ?? "")
+            }
+        }
+    }
     
     // 날짜 문자열을 Date 객체로 변환하는 함수
     func convertStringToDate(_ dateString: String) -> Date? {

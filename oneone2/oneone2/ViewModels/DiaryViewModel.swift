@@ -22,13 +22,20 @@ class DiaryViewModel {
     func setAllDiaries(completion: @escaping ([DiaryEntry]) -> Void){
         DiaryModel.shared.fetchAllDiaries { diaries in
                     completion(diaries)
-                }
+        }
     }
     
     // READ each
     func setEachDiaries(for date: Date, completion: @escaping([DiaryEntry])->Void){
         DiaryModel.shared.fetchEachDiaries(for: date){diaries in
             completion(diaries)}
+    }
+    
+    // READ category
+    func setCategoryDiaries(for category:String, completion: @escaping([DiaryEntry])->Void){
+        DiaryModel.shared.fetchCategoryDiaries(for: category){
+            diaries in completion(diaries)
+        }
     }
     
     // Update

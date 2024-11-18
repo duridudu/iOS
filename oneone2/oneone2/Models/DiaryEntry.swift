@@ -12,5 +12,6 @@ struct DiaryEntry {
     var content: String
     var timestamp: String
     var diaryId: String
-    
+    var categoryName : String
+    var categoryEmoji : String
 }
