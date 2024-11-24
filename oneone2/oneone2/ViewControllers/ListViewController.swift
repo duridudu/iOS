@@ -28,7 +28,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         // 테이블뷰 설정
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10) // 테이블뷰 상단, 좌우 여백 10 포인트
+//        tableView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10) // 테이블뷰 상단, 좌우 여백 10 포인트
         tableView.allowsSelection = true
         
         // 비동기 처리
@@ -44,6 +44,7 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
         // 버튼 추가
         button = UIButton(type: .system)
         button.setTitle("🔎 전체", for: .normal)
+        button.titleLabel?.font = UIFont(name: "NoonnuBasicGothicRegular", size: 22)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
             
         // 버튼의 크기 및 위치 설정
@@ -172,30 +173,5 @@ class ListViewController:UIViewController, UITableViewDataSource, UITableViewDel
                toastLabel.removeFromSuperview() // 애니메이션 종료 후 제거
            }
        }
-    
-    
-//    // Firebase에서 다이어리 삭제하는 메서드
-//    func deleteDiaryEntryFromFirebase(diary: DiaryEntry) {
-//        let userId = Auth.auth().currentUser?.uid ?? ""
-//        let diaryRef = Database.database().reference().child("users/\(userId)/diaries")
-//            
-//        // diaryId로 해당 항목을 찾아서 삭제
-//           let query = diaryRef.queryOrdered(byChild: "diaryId").queryEqual(toValue: diary.diaryId) // diaryId를 사용하여 쿼리
-//           
-//           query.observeSingleEvent(of: .value) { snapshot in
-//               if let snapshot = snapshot.children.allObjects.first as? DataSnapshot {
-//                   // diaryId에 해당하는 항목을 삭제
-//                   snapshot.ref.removeValue { error, _ in
-//                       if let error = error {
-//                           print("Error deleting diary: \(error.localizedDescription)")
-//                       } else {
-//                           self.showToast(message: "삭제되었습니다.")
-//                           // 삭제 후 바로 없어진거 보여주려고
-//                           self.setEvents()
-//                           print("Diary deleted successfully!")
-//                       }
-//                   }
-//               }
-//           }
-//        }
+
 }

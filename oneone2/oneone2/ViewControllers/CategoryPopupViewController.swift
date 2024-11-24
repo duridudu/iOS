@@ -26,7 +26,7 @@ class CategoryPopupViewController:UIViewController, UITableViewDataSource, UITab
         // 테이블뷰 설정
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10) // 테이블뷰 상단, 좌우 여백 10 포인트
+//        tableView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10) // 테이블뷰 상단, 좌우 여백 10 포인트
         tableView.allowsSelection = true
         
         

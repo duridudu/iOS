@@ -64,7 +64,8 @@ class WriteViewController:UIViewController, CategorySelectDelegate{
             print("diary is NOT nil.")
             self.editTitle.text = diary.title
             self.editContent.text = diary.content
-            
+            category.categoryName = diary.categoryName
+            category.categoryEmoji = diary.categoryEmoji
             lblCategory.text = diary.categoryEmoji + " " + diary.categoryName
             // 원하는 날짜를 생성
             let formatter = DateFormatter()
@@ -101,13 +102,6 @@ class WriteViewController:UIViewController, CategorySelectDelegate{
         // Dim 영역 클릭 시 패널을 닫을 수 있도록 설정
         floatingPanel?.isRemovalInteractionEnabled = true
         
-        // FloatingPanel의 cornerRadius 설정
-//        floatingPanel?.surfaceView.layer.cornerRadius = 20 // 20은 원하는 라운드 값
-//        floatingPanel?.surfaceView.layer.masksToBounds = true // 라운드를 위해 마스크 처리
-//        floatingPanel?.surfaceView.layer.shadowColor = UIColor.black.cgColor
-//        floatingPanel?.surfaceView.layer.shadowOpacity = 0.1
-//        floatingPanel?.surfaceView.layer.shadowOffset = CGSize(width: 0, height: -2)
-//        floatingPanel?.surfaceView.layer.shadowRadius = 20
         
         // 바텀 시트 표시
         floatingPanel?.addPanel(toParent: self)
@@ -186,7 +180,7 @@ class WriteViewController:UIViewController, CategorySelectDelegate{
            // 토스트 메시지의 라벨 생성
            let toastLabel = UILabel()
            toastLabel.text = message
-        toastLabel.font = UIFont(name:"NoonnuBasicGothicRegular", size:10)
+        toastLabel.font = UIFont(name:"NoonnuBasicGothicRegular", size:13)
            toastLabel.textColor = .white
            toastLabel.textAlignment = .center
            toastLabel.numberOfLines = 0

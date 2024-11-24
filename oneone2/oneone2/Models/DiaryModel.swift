@@ -149,6 +149,7 @@ class DiaryModel {
         
     }
     
+    // 
     // MARK: -CREATE
     // 사용자 경로에 diaries 항목 추가
     func addDiary(diary: DiaryEntry){

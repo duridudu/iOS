@@ -28,7 +28,7 @@ class CustomFloatingPanelLayout: FloatingPanelLayout {
         return [
             .full: FloatingPanelLayoutAnchor(absoluteInset: 30.0, edge: .top, referenceGuide: .safeArea),
             .half: FloatingPanelLayoutAnchor(absoluteInset: 450.0, edge: .bottom, referenceGuide: .safeArea),
-            .tip: FloatingPanelLayoutAnchor(absoluteInset: 44.0, edge: .bottom, referenceGuide: .safeArea),
+            .tip: FloatingPanelLayoutAnchor(absoluteInset: 1.0, edge: .bottom, referenceGuide: .safeArea),
         ]
     }
 }
