@@ -15,6 +15,9 @@ class DiaryModel {
     private var diariesRef:DatabaseReference?
     var diaryEntries = [DiaryEntry]()
     
+    // 푸시 설정
+    var notifiManager = NotificationManager()
+    
     static let shared = DiaryModel() // 싱글턴 인스턴스
     private init() {} // 외부에서 인스턴스를 생성하지 못하도록 설정
     
@@ -149,17 +152,20 @@ class DiaryModel {
         
     }
     
-    // 
+   
     // MARK: -CREATE
     // 사용자 경로에 diaries 항목 추가
-    func addDiary(diary: DiaryEntry){
+    func addDiary(diary: DiaryEntry, completion: @escaping (String) -> Void) {
         let userDiaryRef = //diariesRef?.child("users").child(userId!).child("diaries").childByAutoId()
         diariesRef?.childByAutoId()
         userDiaryRef?.setValue(["title": diary.title, "content":diary.content, "timestamp" :diary.timestamp, "photourl":"url", "diaryId":userDiaryRef?.key ?? "", "categoryName":diary.categoryName, "categoryEmoji":diary.categoryEmoji]) { error, _ in
             if let error = error {
                 print("Error saving diary entry: \(error)")
+                completion("")
             } else {
                 print("Diary entry saved successfully!")
+                completion(userDiaryRef?.key ?? "")
+//                self.notifiManager.scheduleNotification(for: diary, on: self.convertStringToDate(diary.timestamp)!)
             }
         }
     }
@@ -182,6 +188,7 @@ class DiaryModel {
                     print("Error updating diary entry: \(error)")
                 } else {
                     print("Diary entry updated successfully!")
+                    self.notifiManager.updateNotification(for: diary, with: self.convertStringToDate(diary.timestamp)!)
                 }
         }
     }

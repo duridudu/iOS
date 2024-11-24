@@ -44,6 +44,7 @@
 		65BFC2A32CEB199D00C5BF3E /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BFC2A22CEB199D00C5BF3E /* CategoryTableViewCell.swift */; };
 		65BFC2A62CEB200400C5BF3E /* CategorySelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BFC2A52CEB200400C5BF3E /* CategorySelectDelegate.swift */; };
 		65BFC2AA2CEB41E200C5BF3E /* CustomFloatingPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BFC2A92CEB41E200C5BF3E /* CustomFloatingPanelLayout.swift */; };
+		65BFC2AC2CF3047E00C5BF3E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BFC2AB2CF3047E00C5BF3E /* NotificationManager.swift */; };
 		65C013F32CDF4A64007410E2 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C013F22CDF4A64007410E2 /* WriteViewController.swift */; };
 		65CDB7B12CE8791700402DD4 /* NoonnuBasicGothicRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65CDB7B02CE8791700402DD4 /* NoonnuBasicGothicRegular.ttf */; };
 		65CDB7B32CE881FD00402DD4 /* DiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CDB7B22CE881FD00402DD4 /* DiaryModel.swift */; };
@@ -135,6 +136,7 @@
 		65BFC2A22CEB199D00C5BF3E /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		65BFC2A52CEB200400C5BF3E /* CategorySelectDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectDelegate.swift; sourceTree = "<group>"; };
 		65BFC2A92CEB41E200C5BF3E /* CustomFloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingPanelLayout.swift; sourceTree = "<group>"; };
+		65BFC2AB2CF3047E00C5BF3E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		65C013F22CDF4A64007410E2 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		65CDB7B02CE8791700402DD4 /* NoonnuBasicGothicRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NoonnuBasicGothicRegular.ttf; sourceTree = "<group>"; };
 		65CDB7B22CE881FD00402DD4 /* DiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryModel.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				65BFC29E2CEB157C00C5BF3E /* EmojiOnlyTextField.swift */,
 				65BFC2A52CEB200400C5BF3E /* CategorySelectDelegate.swift */,
 				65BFC2A92CEB41E200C5BF3E /* CustomFloatingPanelLayout.swift */,
+				65BFC2AB2CF3047E00C5BF3E /* NotificationManager.swift */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				6548EA952CDCFE5000359E90 /* AppDelegate.swift in Sources */,
 				65A0CC582CDF2622001E7C1B /* UIColor_CustomColors.swift in Sources */,
 				65CDB7B82CE8878300402DD4 /* DiaryViewModel.swift in Sources */,
+				65BFC2AC2CF3047E00C5BF3E /* NotificationManager.swift in Sources */,
 				65BFC2972CEB094400C5BF3E /* CategoryModel.swift in Sources */,
 				655E03E92CDF604600E22E76 /* ListViewController+Extension.swift in Sources */,
 				6548EA972CDCFE5000359E90 /* SceneDelegate.swift in Sources */,

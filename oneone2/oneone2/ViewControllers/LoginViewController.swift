@@ -19,13 +19,14 @@ class LoginViewController:UIViewController {
    
     
     override func viewDidLoad() {
-            super.viewDidLoad()
-            editPw.isSecureTextEntry = true
-        
-            // 이미 로그인한 경우 메인 화면으로 이동
-            if UserDefaults.standard.bool(forKey: "isLoggedIn") {
-                moveToMainScreen()
-            }
+        super.viewDidLoad()
+        editPw.isSecureTextEntry = true
+        let NotificationManager = NotificationManager()
+        NotificationManager.requestPermission()
+        // 이미 로그인한 경우 메인 화면으로 이동
+        if UserDefaults.standard.bool(forKey: "isLoggedIn") {
+            moveToMainScreen()
+        }
         
         // Tap gesture recognizer 설정
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -33,6 +34,17 @@ class LoginViewController:UIViewController {
         btnLogin.layer.cornerRadius = 15
     }
     
+//    // 푸시 권한
+//    func requestNotificationPermission() {
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+//            if granted {
+//                print("Notification permission granted!")
+//            } else {
+//                print("Notification permission denied: \(error?.localizedDescription ?? "No error")")
+//            }
+//        }
+//    }
+//    
     // 회원가입 함수
       func signUp(email: String, password: String) {
           Auth.auth().createUser(withEmail: email, password: password) { authResult, error in

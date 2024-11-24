@@ -28,6 +28,9 @@ class WriteViewController:UIViewController, CategorySelectDelegate{
     var diaryViewModel = DiaryViewModel()
     var categoryVieModel = CategoryViewModel()
     var category = CategoryEntry(categoryName: "전체", categoryEmoji: "")
+
+    // 푸시
+    var notiManager = NotificationManager()
     
     // 바텀시트
     var floatingPanel: FloatingPanelController?
@@ -118,6 +121,7 @@ class WriteViewController:UIViewController, CategorySelectDelegate{
         // FloatingPanel 닫기
         floatingPanel?.dismiss(animated: true, completion: nil)
     }
+
     
     func addTodoItem() {
         let content = editContent.text
@@ -136,12 +140,13 @@ class WriteViewController:UIViewController, CategorySelectDelegate{
             diary = DiaryEntry(title: title ?? "", content: content ?? "", timestamp: dateString, diaryId: "", categoryName: self.category.categoryName, categoryEmoji: self.category.categoryEmoji )
             
             if let diary = diary {
+               // diaryViewModel.newDiary(diary: diary)// 다이어리 저장 후 알림 설정
                 diaryViewModel.newDiary(diary: diary)
             } else {
                 print("Error: diary is nil.")
             }
-
         }
+        
         // 수정이면
         else{
             print("FALSEEEE")
@@ -207,5 +212,8 @@ class WriteViewController:UIViewController, CategorySelectDelegate{
                toastLabel.removeFromSuperview() // 애니메이션 종료 후 제거
            }
        }
+    
+    
+    
     
 }
