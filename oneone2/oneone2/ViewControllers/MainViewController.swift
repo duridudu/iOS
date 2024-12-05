@@ -22,7 +22,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var allEntries = [DiaryEntry]()   // 전체 데이터
     
     var calendar: FSCalendar!
-    
+    // 초기 인디케이터
+    let activityIndicator = UIActivityIndicatorView(style: .large)
     // 뷰모델 인스턴스 생성
     var diaryViewModel = DiaryViewModel()
 
@@ -31,6 +32,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
       
         // 오늘 날짜를 가져옴
         let today = Date()
+       
         setEachEvents(for: today) { [weak self] in
             self?.setEvents()  // setEachEvents 완료 후 setEvents 실행
         }
@@ -66,7 +68,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ])
         
         configureCalendarAppearance()
-        
+        // 로딩 인디케이터
+        // 인디케이터 추가 및 시작
+        activityIndicator.center = view.center
+        activityIndicator.color = .gray // 배경과 대조되는 색상으로 설정
+        activityIndicator.hidesWhenStopped = true // 기본값이 true지만 명시적으로 설정 가능
+        view.addSubview(activityIndicator)
+        activityIndicator.isHidden = false
+        self.view.bringSubviewToFront(activityIndicator) // 최상단으로 이동
+        // Auto Layout으로 화면 중앙에 위치
+        NSLayoutConstraint.activate([
+                activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+
+        activityIndicator.startAnimating()
+        print("SUB VIEW",self.view.subviews) // 추가된 서브뷰를 확인
     }
     
     // 로그아웃 버튼 클릭
@@ -176,6 +193,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self?.tableView.reloadData()
                 //print("[NEW] Set Each Event 다이어리 count : ", self?.diaryEntries.count)
                 completion()  // 데이터 로딩 완료 후, completion 호출
+                self?.activityIndicator.stopAnimating()
             }
         }
     }

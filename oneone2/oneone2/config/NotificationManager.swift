@@ -34,9 +34,9 @@ class NotificationManager{
         dateComponents.second = 0
 
         // 알림 트리거 생성
-        //let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         // 1초 뒤 알림을 울리도록 설정
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+       //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
 
         // 알림 요청 생성 (다이어리 ID를 identifier로 사용)
         let request = UNNotificationRequest(identifier: diaryId, content: content, trigger: trigger)
