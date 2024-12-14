@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>눈누 기초고딕 Regular.ttf</string>
+		<string>ONE 모바일고딕 Title</string>
+		<string>Mungyeong-Gamhong-Apple.ttf</string>
+		<string>NIXGONFONTS M 2.0.ttf</string>
+	</array>
+	<key>CFBundleIdentifier</key>
+	<string></string>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>

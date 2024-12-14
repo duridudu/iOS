@@ -15,7 +15,8 @@ struct SubwayLiveAttributes: ActivityAttributes {
         var emoji: String
         var message: String
         var remainingSeconds: Int // 종료 시각
-        var endTime : Date
+        var remainingSeconds2: Int // 다음 열차 종료 시각
+       // var endTime : Date
     }
 
     // Fixed non-changing properties about your activity go here!
@@ -23,21 +24,56 @@ struct SubwayLiveAttributes: ActivityAttributes {
 }
 
 struct SubwayLiveLiveActivity: Widget {
-    @State private var remainingTime = 1133 // 부모 뷰에서 관리하는 상태
+    @State private var remainingTime = 60 // 부모 뷰에서 관리하는 상태
+    @State private var remainingTime2 = 60 // 부모 뷰에서 관리하는 상태
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: SubwayLiveAttributes.self) { context in
-            SubwayLiveView(context: context, remainingTime: $remainingTime)
+            SubwayLiveView(context: context, remainingTime: $remainingTime, remainingTime2: $remainingTime2)
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                            Text("🚇")
+                    VStack {
+                        Text("이번 열차")
+                            .font(.footnote)
+                            .padding(.top, 20)
+                            
+                        Text("\(context.state.remainingSeconds.timeFormatted)")
+                            .font(.headline)
+                            .foregroundColor(.blue)
+                            .padding(.bottom,20)
+                            }
                         }
-                        DynamicIslandExpandedRegion(.trailing) {
-                            Text("\(remainingTime.timeFormatted)")
+                DynamicIslandExpandedRegion(.trailing) {
+                    VStack {
+                        Text("다음 열차")
+                            .font(.footnote)
+                            .padding(.top, 20)
+                            
+                        Text("\(context.state.remainingSeconds2.timeFormatted)")
+                            .font(.headline)
+                            .foregroundColor(.green)
+                            .padding(.bottom,20)
                         }
-                        DynamicIslandExpandedRegion(.bottom) {
-                            Text("\(context.attributes.stationName)")
-                        }
+                               
+                    }
+                DynamicIslandExpandedRegion(.center) {
+                    VStack{
+                        Text("🚇 지각 그만! ")
+                                .font(.headline)
+                                
+                       // HStack {
+                        
+                        Text("📍 \(context.attributes.stationName)")
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                            .padding(.top,5)
+                            .padding(.bottom,15)
+                            }
+                           // .padding(.horizontal)
+                       // }
+                    }
+                    
+                    
             } compactLeading: {
                 Text("🚇")
             } compactTrailing: {
@@ -53,7 +89,7 @@ struct SubwayLiveLiveActivity: Widget {
 struct SubwayLiveView: View {
     let context: ActivityViewContext<SubwayLiveAttributes>
     @Binding var remainingTime: Int // 부모에서 전달받은 Binding
-
+    @Binding var remainingTime2: Int
     // 여기에서 private을 제거하거나 internal로 변경
 //    init(context: ActivityViewContext<SubwayLiveAttributes>, remainingTime: State<Int>) {
 //           self.context = context
@@ -61,35 +97,47 @@ struct SubwayLiveView: View {
 //    }
 //    
     var body: some View {
-            VStack(spacing: 10) {
-                Text("🚇 \(context.attributes.stationName)")
-                    .font(.headline)
-                Text("\(context.state.emoji) \(context.state.message)")
-                    .font(.subheadline)
-                Text("남은 시간: \(context.state.remainingSeconds.timeFormatted)")
-                    .font(.title)
-                    .foregroundColor(.red)
-            }
-            .padding()
-            .onAppear {
-                    startTimer() // 타이머 시작
-        }
+        VStack {
+            Text("🚇 지각 그만! ")
+                .font(.headline)
+                .padding(.top,30)
+                .padding(.leading, 25)
+                .frame(maxWidth: .infinity, alignment: .leading) // 왼쪽 정렬
+            
+              Text("정차역 : \(context.attributes.stationName)")
+                .font(.headline)
+                .foregroundColor(.gray)
+                .padding(.top,5)
+                .padding(.leading, 25)
+                  .padding(.bottom, 15)
+                  .frame(maxWidth: .infinity, alignment: .leading) // 왼쪽 정렬
+
+              HStack {
+                  VStack {
+                      Text("이번 열차")
+                          .font(.footnote)
+                          .foregroundColor(.gray)
+                      Text("\(context.state.remainingSeconds.timeFormatted)")
+                          .font(.headline)
+                          .foregroundColor(.blue)
+                  }
+                  Spacer()
+                          .frame(width: 130) // 원하는 간격을 설정
+                  VStack {
+                      Text("다음 열차")
+                          .font(.footnote)
+                          .foregroundColor(.gray)
+                      Text("\(context.state.remainingSeconds2.timeFormatted)")
+                          .font(.headline)
+                          .foregroundColor(.green)
+                  }
+              }
+              .padding(.horizontal,10)
+              .padding(.bottom, 30)
+          }
+          .padding()
     }
     
-   
-    private func startTimer() {
-        print("SubwayLiveView야=============++===")
-           remainingTime = 119 // 초기 값 설정
-           Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-               if remainingTime > 0 {
-                   remainingTime -= 1 // 1초씩 감소
-               } else {
-                   timer.invalidate() // 타이머 멈추기
-                  // refreshAPI() // 타이머가 0초 되면 새 데이터로 갱신
-               }
-           }
-       }
-
 }
 
 
@@ -101,11 +149,11 @@ extension SubwayLiveAttributes {
 
 extension SubwayLiveAttributes.ContentState {
     fileprivate static var smiley: SubwayLiveAttributes.ContentState {
-        SubwayLiveAttributes.ContentState(emoji: "😀", message: "nothing", remainingSeconds: 89, endTime: Date().addingTimeInterval(89))
+        SubwayLiveAttributes.ContentState(emoji: "😀", message: "nothing", remainingSeconds: 89, remainingSeconds2: 190)
      }
      
      fileprivate static var starEyes: SubwayLiveAttributes.ContentState {
-         SubwayLiveAttributes.ContentState(emoji: "🤩", message: "nothing", remainingSeconds: 89, endTime: Date().addingTimeInterval(89))
+         SubwayLiveAttributes.ContentState(emoji: "🤩", message: "nothing", remainingSeconds: 89, remainingSeconds2: 190)
      }
 }
 

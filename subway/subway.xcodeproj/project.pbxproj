@@ -31,6 +31,16 @@
 		65BD89672D0C7B3900D37381 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65BFC2BF2D04947500C5BF3E /* Main.storyboard */; };
 		65BD89692D0C819D00D37381 /* SubwayLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BD89682D0C819D00D37381 /* SubwayLiveView.swift */; };
 		65BD896A2D0D51D900D37381 /* SubwayLiveLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BD89572D0C773D00D37381 /* SubwayLiveLiveActivity.swift */; };
+		65BD896E2D0DB2D100D37381 /* Mungyeong-Gamhong-Apple.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BD896D2D0DB2D100D37381 /* Mungyeong-Gamhong-Apple.ttf */; };
+		65BD89702D0DB45700D37381 /* NIXGONFONTS M 2.0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BD896F2D0DB45700D37381 /* NIXGONFONTS M 2.0.ttf */; };
+		65BD89812D0DBCD000D37381 /* ONE Mobile Title.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BD89802D0DBCD000D37381 /* ONE Mobile Title.ttf */; };
+		65BD89822D0DBCD000D37381 /* ONE Mobile Title.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BD89802D0DBCD000D37381 /* ONE Mobile Title.ttf */; };
+		65BD89832D0DBCD000D37381 /* ONE Mobile Title.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BD89802D0DBCD000D37381 /* ONE Mobile Title.ttf */; };
+		65BD89842D0DBCD000D37381 /* ONE Mobile Title.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BD89802D0DBCD000D37381 /* ONE Mobile Title.ttf */; };
+		65BD89862D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BD89852D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf */; };
+		65BD89872D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BD89852D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf */; };
+		65BD89882D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BD89852D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf */; };
+		65BD89892D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BD89852D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf */; };
 		65BFC2BA2D04947500C5BF3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BFC2B92D04947500C5BF3E /* AppDelegate.swift */; };
 		65BFC2BC2D04947500C5BF3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BFC2BB2D04947500C5BF3E /* SceneDelegate.swift */; };
 		65BFC2BE2D04947500C5BF3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BFC2BD2D04947500C5BF3E /* ViewController.swift */; };
@@ -107,6 +117,10 @@
 		65BD895D2D0C773F00D37381 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65BD895F2D0C773F00D37381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65BD89682D0C819D00D37381 /* SubwayLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayLiveView.swift; sourceTree = "<group>"; };
+		65BD896D2D0DB2D100D37381 /* Mungyeong-Gamhong-Apple.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mungyeong-Gamhong-Apple.ttf"; path = "subway/Mungyeong-Gamhong-Apple.ttf"; sourceTree = SOURCE_ROOT; };
+		65BD896F2D0DB45700D37381 /* NIXGONFONTS M 2.0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NIXGONFONTS M 2.0.ttf"; sourceTree = "<group>"; };
+		65BD89802D0DBCD000D37381 /* ONE Mobile Title.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ONE Mobile Title.ttf"; sourceTree = "<group>"; };
+		65BD89852D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NoonnuBasicGothicRegular.ttf; sourceTree = "<group>"; };
 		65BFC2B62D04947500C5BF3E /* subway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = subway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BFC2B92D04947500C5BF3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65BFC2BB2D04947500C5BF3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +228,21 @@
 			path = SubwayLive;
 			sourceTree = "<group>";
 		};
+		65BD896B2D0DB2AD00D37381 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				65BD896C2D0DB2B400D37381 /* fonts */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		65BD896C2D0DB2B400D37381 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		65BFC2AD2D04947500C5BF3E = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +272,11 @@
 		65BFC2B82D04947500C5BF3E /* subway */ = {
 			isa = PBXGroup;
 			children = (
+				65BD89852D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf */,
+				65BD89802D0DBCD000D37381 /* ONE Mobile Title.ttf */,
+				65BD896F2D0DB45700D37381 /* NIXGONFONTS M 2.0.ttf */,
+				65BD896D2D0DB2D100D37381 /* Mungyeong-Gamhong-Apple.ttf */,
+				65BD896B2D0DB2AD00D37381 /* resources */,
 				65BD894A2D0C75A000D37381 /* Model */,
 				65BD89022D049FF600D37381 /* Utils */,
 				65BFC2EA2D049D6E00C5BF3E /* API */,
@@ -494,6 +528,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65BD89822D0DBCD000D37381 /* ONE Mobile Title.ttf in Resources */,
+				65BD89872D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +537,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65BD89832D0DBCD000D37381 /* ONE Mobile Title.ttf in Resources */,
+				65BD89882D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,7 +546,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65BD89842D0DBCD000D37381 /* ONE Mobile Title.ttf in Resources */,
 				65BD895E2D0C773F00D37381 /* Assets.xcassets in Resources */,
+				65BD89892D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,9 +556,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65BD89702D0DB45700D37381 /* NIXGONFONTS M 2.0.ttf in Resources */,
 				65BD89672D0C7B3900D37381 /* Main.storyboard in Resources */,
+				65BD896E2D0DB2D100D37381 /* Mungyeong-Gamhong-Apple.ttf in Resources */,
 				65BFC2C32D04947700C5BF3E /* Assets.xcassets in Resources */,
+				65BD89812D0DBCD000D37381 /* ONE Mobile Title.ttf in Resources */,
 				65BFC2C62D04947700C5BF3E /* Base in Resources */,
+				65BD89862D0DBD7900D37381 /* NoonnuBasicGothicRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

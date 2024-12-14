@@ -11,10 +11,25 @@ import Alamofire
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var BtnDest: UIButton!
+    @IBOutlet weak var BtnLine: UIButton!
+    @IBOutlet weak var BtnSearch: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        for familyName in UIFont.familyNames {
+                print("Family: \(familyName)")
+                for fontName in UIFont.fontNames(forFamilyName: familyName) {
+                    print("   Font: \(fontName)")
+                }
+            }
+        
+        self.BtnDest.titleLabel?.font = UIFont(name:"Mungyeong-Gamhong-Apple.ttf", size:19)
+        self.BtnLine.titleLabel?.font = UIFont(name:"Mungyeong-Gamhong-Apple", size:19)
+        self.BtnSearch.titleLabel?.font = UIFont(name:"Mungyeong-Gamhong-Apple", size:19)
     }
+    
 
     @IBAction func btnOkClicked(_ sender: UIButton) {
         
@@ -45,6 +60,7 @@ class HomeViewController: UIViewController {
     }
     
     // 네비게이션 스택에서 다른 화면으로 넘어가기 전에 준비
+    // 역이름, 남은 초, 남은 초2
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("HomeVc prepare called() / segue.identifier : \(segue.identifier)")
         switch segue.identifier{

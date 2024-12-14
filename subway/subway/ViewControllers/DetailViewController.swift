@@ -19,17 +19,18 @@ class DetailViewController: UIViewController {
 //            print("*******Received Data: \(data)")
 //        }
         print("DETAIL VIEW")
-        startLiveActivity()
+        startLiveActivity(station: "영등포시장역", first: 94, second: 198)
     }
 
    
-    func startLiveActivity() {
-        let attributes = SubwayLiveAttributes(stationName: "영등포시장역")
+    func startLiveActivity(station: String, first:Int, second:Int) {
+        let attributes = SubwayLiveAttributes(stationName: station)
             let initialState = SubwayLiveAttributes.ContentState(
                 emoji: "🚇",
                 message: "Train Arriving",
-                remainingSeconds: 89,
-                endTime: Date().addingTimeInterval(89)
+                remainingSeconds: first,
+                remainingSeconds2 : second
+              //  endTime: Date().addingTimeInterval(89)
             )
 
             do {
@@ -41,20 +42,20 @@ class DetailViewController: UIViewController {
                 print("Live Activity started: \(activity.id)")
 
                 // Start Timer
-                startTimerForLiveActivity()
+                startTimerForLiveActivity(first: first, second: second)
             } catch {
                 print("Failed to start Live Activity: \(error)")
             }
        }
     
     
-    func updateLiveActivity(remainingSeconds: Int) {
+    func updateLiveActivity( first:Int, second:Int) {
         Task {
             let updatedState = SubwayLiveAttributes.ContentState(
-                emoji: "⏱",
-                message: "Train Departing Soon",
-                remainingSeconds: remainingSeconds,
-                endTime: Date().addingTimeInterval(TimeInterval(remainingSeconds))
+                emoji: "🚇",
+                message: "Train Arriving",
+                remainingSeconds: first,
+                remainingSeconds2 : second
             )
 
             // 현재 활성화된 모든 Live Activity 업데이트
@@ -64,19 +65,23 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func startTimerForLiveActivity() {
-        var remainingSeconds = 89 // API에서 받아온 초기 남은 시간
-
+    func startTimerForLiveActivity(first:Int, second:Int) {
+        var remainingSeconds = first // API에서 받아온 초기 남은 시간
+        var remainingSeconds2 = second // API에서 받아온 초기 남은 시간
+        
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             if remainingSeconds > 0 {
                 remainingSeconds -= 1
-                self.updateLiveActivity(remainingSeconds: remainingSeconds)
+                remainingSeconds2 -= 1
+                self.updateLiveActivity(first: remainingSeconds, second: remainingSeconds2)
             } else {
                 timer.invalidate()
                 // API를 다시 호출하거나 Activity를 종료
                // endLiveActivity()
             }
         }
+        
+      
     }
     
 }
