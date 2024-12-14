@@ -421,8 +421,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EQH-7g-xIH">
-                                <rect key="frame" x="79" y="137" width="241" height="36"/>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EQH-7g-xIH">
+                                <rect key="frame" x="62" y="144" width="241" height="36.333333333333343"/>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JF-sE-o44">
                                 <rect key="frame" x="24" y="255" width="30" height="21"/>
@@ -450,6 +450,19 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S93-nG-d0x">
+                                <rect key="frame" x="24" y="152" width="30" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="날짜">
+                                        <attributes>
+                                            <font key="NSFont" size="17" name="NoonnuBasicGothicRegular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FEW-uG-8oe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -457,8 +470,9 @@
                             <constraint firstItem="H37-jM-OBD" firstAttribute="top" secondItem="FEW-uG-8oe" secondAttribute="top" constant="15" id="4Ko-7Q-dZz"/>
                             <constraint firstItem="H37-jM-OBD" firstAttribute="leading" secondItem="FEW-uG-8oe" secondAttribute="leading" constant="16" id="8JL-6m-3dM"/>
                             <constraint firstItem="EQH-7g-xIH" firstAttribute="top" secondItem="H37-jM-OBD" secondAttribute="bottom" constant="20" id="Nn3-6N-tqI"/>
+                            <constraint firstItem="FEW-uG-8oe" firstAttribute="trailing" secondItem="EQH-7g-xIH" secondAttribute="trailing" priority="1" constant="9" id="RNh-xu-izf"/>
                             <constraint firstItem="H37-jM-OBD" firstAttribute="top" secondItem="FEW-uG-8oe" secondAttribute="top" constant="10" id="T3b-M7-hwm"/>
-                            <constraint firstItem="EQH-7g-xIH" firstAttribute="centerX" secondItem="UYU-t3-Ev0" secondAttribute="centerX" id="yR9-pS-OQC"/>
+                            <constraint firstItem="FEW-uG-8oe" firstAttribute="trailing" secondItem="EQH-7g-xIH" secondAttribute="trailing" constant="200" id="gxi-4f-JOw"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="square.and.pencil" catalog="system" id="xIo-l7-MjW"/>

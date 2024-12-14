@@ -1,0 +1,6 @@
+framework module Pods_subway_subwayUITests {
+  umbrella header "Pods-subway-subwayUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

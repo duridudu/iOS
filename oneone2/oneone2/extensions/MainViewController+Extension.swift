@@ -18,6 +18,7 @@ extension MainViewController{
             let cell = tableView.dequeueReusableCell(withIdentifier: "TodoTableViewCell", for: indexPath) as! TodoTableViewCell
             
             let diary = diaryEntries[indexPath.row]
+            print("TABLE : ", diary)
             cell.configure(with: diary, isList: false)
             
         // 삭제 버튼이 클릭되었을 때 해당 셀을 삭제

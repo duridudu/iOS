@@ -16,6 +16,7 @@ extension MainViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         for entry in allEntries {
+//        for entry in diaryEntries {
            let tempDate = formatter.date(from: entry.timestamp)!
            if isSameDay(tempDate, date) {
                 return 1

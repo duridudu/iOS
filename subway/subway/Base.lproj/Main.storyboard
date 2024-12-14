@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S7B-Mb-b1J">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="subway" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="quq-Zb-ofe">
+                                <rect key="frame" x="0.0" y="163" width="393" height="451"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPx-F6-apu">
+                                        <rect key="frame" x="153" y="0.0" width="87.333333333333314" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="호선 선택"/>
+                                        <connections>
+                                            <segue destination="HfZ-Qi-v3O" kind="show" identifier="goToList" id="OTJ-al-3fL"/>
+                                        </connections>
+                                    </button>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ypj-ql-h9u">
+                                        <rect key="frame" x="0.0" y="91.333333333333343" width="393" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="5I0-kH-kdN"/>
+                                        </connections>
+                                    </searchBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyh-VI-mnG">
+                                        <rect key="frame" x="169.66666666666666" y="204.33333333333331" width="53.666666666666657" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="검색"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7t-th-ejD">
+                                        <rect key="frame" x="159" y="306.66666666666669" width="75" height="34.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBs-rz-Q5N">
+                                        <rect key="frame" x="136.66666666666666" y="401" width="119.99999999999997" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="oCG-Fn-mLH"/>
+                                            <constraint firstAttribute="height" constant="50" id="sWj-1H-X8J"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="확인"/>
+                                        <connections>
+                                            <action selector="btnOkClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LX4-ml-gGu"/>
+                                            <segue destination="2kY-OI-393" kind="show" identifier="goToDetail" id="DDW-KT-5dA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="bBs-rz-Q5N" firstAttribute="top" secondItem="O7t-th-ejD" secondAttribute="bottom" constant="60" id="ZcY-xP-eiK"/>
+                                    <constraint firstAttribute="height" constant="500" id="rSZ-eB-RM7"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="quq-Zb-ofe" secondAttribute="bottom" id="3tt-IO-bri"/>
+                            <constraint firstItem="quq-Zb-ofe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6YK-le-k5F"/>
+                            <constraint firstItem="quq-Zb-ofe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9II-XJ-au7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="quq-Zb-ofe" secondAttribute="trailing" id="9LI-BI-4E7"/>
+                            <constraint firstItem="quq-Zb-ofe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="F4r-uX-YdV"/>
+                            <constraint firstItem="quq-Zb-ofe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hRX-dV-gzh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ssb-CL-WYT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-773.28244274809163" y="-235.21126760563382"/>
+        </scene>
+        <!--List View Controller-->
+        <scene sceneID="2gX-io-CiO">
+            <objects>
+                <viewController id="HfZ-Qi-v3O" customClass="ListViewController" customModule="subway" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c19-VS-uSi">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0LN-jc-STJ">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6a-LL-LCK">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="46.666666666666664"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="1호선"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pok-Ea-LXH">
+                                        <rect key="frame" x="0.0" y="66.666666666666657" width="393" height="47"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="2호선"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kur-vy-nHu">
+                                        <rect key="frame" x="0.0" y="133.66666666666666" width="393" height="46.666666666666657"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="3호선"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHD-cq-MAq">
+                                        <rect key="frame" x="0.0" y="200.33333333333331" width="393" height="47"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="4호선"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpk-oc-Npg">
+                                        <rect key="frame" x="0.0" y="267.33333333333331" width="393" height="46.666666666666686"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="5호선"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-Gu-7Vj">
+                                        <rect key="frame" x="0.0" y="334" width="393" height="47"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="6호선"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P05-bB-wT8">
+                                        <rect key="frame" x="0.0" y="401" width="393" height="46.666666666666686"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="7호선"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fa3-vI-UiK">
+                                        <rect key="frame" x="0.0" y="467.66666666666663" width="393" height="47"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="8호선"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ZY-nv-xwD">
+                                        <rect key="frame" x="0.0" y="534.66666666666663" width="393" height="46.666666666666629"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="9호선"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfK-oq-wVt">
+                                        <rect key="frame" x="0.0" y="601.33333333333337" width="393" height="47"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="경의중앙선"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FyA-W5-ucp">
+                                        <rect key="frame" x="0.0" y="668.33333333333337" width="393" height="46.666666666666629"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="우이신설선"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wdz-mS-xu8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0LN-jc-STJ" firstAttribute="centerY" secondItem="c19-VS-uSi" secondAttribute="centerY" id="1BH-Ot-POr"/>
+                            <constraint firstItem="0LN-jc-STJ" firstAttribute="leading" secondItem="wdz-mS-xu8" secondAttribute="leading" id="56V-mn-nko"/>
+                            <constraint firstItem="0LN-jc-STJ" firstAttribute="centerX" secondItem="c19-VS-uSi" secondAttribute="centerX" id="D3n-Cd-VWs"/>
+                            <constraint firstItem="wdz-mS-xu8" firstAttribute="bottom" secondItem="0LN-jc-STJ" secondAttribute="bottom" id="Svg-of-AY1"/>
+                            <constraint firstItem="wdz-mS-xu8" firstAttribute="trailing" secondItem="0LN-jc-STJ" secondAttribute="trailing" id="ltv-JI-9F1"/>
+                            <constraint firstItem="0LN-jc-STJ" firstAttribute="top" secondItem="wdz-mS-xu8" secondAttribute="top" id="tMq-5w-U6d"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="QZb-a3-hha"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JlA-dv-15h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="145.80152671755724" y="-235.21126760563382"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Vjb-1p-NZG">
+            <objects>
+                <viewController id="2kY-OI-393" customClass="DetailViewController" customModule="subway" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cAj-sn-DuU">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jxm-dn-P2w"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BCY-Sq-aHZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wUl-bV-lfe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="175" y="501"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7TM-ki-4gy">
+            <objects>
+                <navigationController id="S7B-Mb-b1J" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ne9-o1-JQn">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dm3-1C-Q1Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MMT-Ls-Dam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1659" y="-235"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
