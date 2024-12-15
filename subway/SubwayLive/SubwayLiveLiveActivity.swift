@@ -136,6 +136,7 @@ struct SubwayLiveView: View {
               .padding(.bottom, 30)
           }
           .padding()
+          .background(Color.white.opacity(0.5))
     }
     
 }
